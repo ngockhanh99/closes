@@ -1,0 +1,414 @@
+<style>
+    #tab-permit li {
+        margin-bottom: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .help-block {
+        color: red;
+        font-style: italic;
+    }
+</style>
+<div class="card margin-bottom0">
+    <div class="card-body padding-bottom0 padding0">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box-title">
+            <div class="box-title-text"><span>Danh sách người sử dụng</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Main content -->
+        <!--box hiển thị danh sách đơn vị/phòng ban/nhóm người sử dụng-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="box box-primary">
+                            <!-- /.box-header -->
+                            <div class="box-body my_box tab-content">
+                                <button class="btn btn-success" ng-click="actions.showModalUser(true)">
+                                    <i class="fa fa-plus"></i> Thêm người sử dụng
+                                </button>
+                                <button class="btn btn-light" ng-if="loggedInUser.user_is_admin == 1"
+                                        ng-click="actions.showModalResetPassword()">
+                                    <i class="fa fa-refresh"></i> Reset mật khẩu
+                                </button>
+                                <table class="table table-bordered table-record table-ou table-striped table-hover margin-top-15">
+                                    <thead class="table-green">
+                                    <tr>
+                                        <th class="text-center">Loại</th>
+                                        <th class="text-center"></th>
+                                        <th class="text-center">ID</th>
+                                        <th>Tên</th>
+                                        <th class="text-center">Thứ tự</th>
+                                        <th class="text-center">Trạng thái</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in data.listUser">
+                                        <td class="tbl-type text-center">
+                                            <i class="fa fa-folder-open-o"></i>
+                                        </td>
+                                        <td class="tbl-actions text-center">
+                                            <div class="dropdown">
+                                                <a href="javascript:;" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                                                   aria-expanded="false"><i class="fa fa-bars"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="javascript:;" ng-click="actions.showModalUser(false,$index)"><i
+                                                                class="fa fa-edit"></i> Sửa
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;" ng-click="actions.deleteUser(item.id)"><i
+                                                                class="fa fa-trash"></i> Xóa
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="text-center"><span class="id">{{ item.id }}</span></td>
+                                        <td class="tbl-text">
+                                            <a href="javascript:;" ng-click="actions.showModalUser(false,$index)"
+                                               class="btn-link">{{ item.user_name }}
+                                            </a>
+                                        </td>
+                                        <td class="text-center">{{ item.user_order }}</td>
+                                        <td class="text-center">
+                                            <span ng-if="item.user_status==1" class="badge bg-info">Hoạt động</span>
+                                            <span ng-if="item.user_status==0" class="badge bg-warning">Không hoạt động</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--Modal thêm mới người sử dụng-->
+    <div id="modal_user" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="color: #fff;">
+                    <h4 class="modal-title">{{!data.isInsert ? 'Thông tin chi tiết người sử dụng' : 'Thêm mới người sử dụng'}}</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="box-header with-border">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item "><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#form_dangkyNSD">Thông tin cơ bản</a>
+                            </li>
+                            <li  ng-if="loggedInUser.user_is_admin =='1'">
+                                <a  class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-group">Chọn nhóm</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-permit">Phân quyền</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form>
+                        <div class="box-body tab-content">
+                            <!--Form thông tin hành chính-->
+                            <div id="form_dangkyNSD" class="tab-pane in active">
+                                <!--Thông tin tài khoản-->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"><b>Tài khoản</b></h4>
+                                </div>
+                                <div class="box-body margin-top-15" >
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Email (Tên đăng nhập) <span
+                                                        style="color: #d81b1b">*</span></label>
+                                                <input ng-model="data.singleUser.user_email" type="email"
+                                                       autocomplete="off"
+                                                       class="form-control" placeholder="Nhập Email (tên đăng nhập)...">
+                                                <span class="help-block">{{ errors.user_email[0] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label >Mật khẩu mới<span
+                                                        style="color: #d81b1b">*</span></label>
+                                                <input ng-model="data.singleUser.password"
+                                                       autocomplete="off"
+                                                       type="password" class="form-control"
+                                                       placeholder="Nhập mật khẩu..">
+                                                <span class="help-block">{{ errors.password[0] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Nhập lại mật khẩu <span
+                                                        style="color: #d81b1b">*</span></label>
+                                                <input ng-model="data.singleUser.password_confirmation" type="password"
+                                                       autocomplete="off"
+                                                       class="form-control" placeholder="Xác nhận lại mật khẩu...">
+                                                <span class="help-block">{{ errors.password_confirmation[0] }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Thông tin hành chính-->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"><b>Thông tin hành chính</b></h4>
+                                </div>
+                                <div class="box-body margin-top-15">
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <label>Tên Doanh nghiệp/Tổ chức <span
+                                                    style="color: #d81b1b">*</span></label>
+                                            <input ng-model="data.singleUser.user_name"
+                                                   class="form-control" placeholder="Nhập tên Doanh nghiệp/Tổ chức...">
+                                            <span class="help-block">{{ errors.user_name[0] }}</span>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label>Vai trò <span style="color: #d81b1b">*</span></label>
+                                            <div class="row">
+                                                <div ng-repeat="(key,item) in data.listRole" class="col-md-6">
+                                                    <label>
+                                                        <input ng-click="actions.changeGroup()" ng-value="key"
+                                                               ng-model="data.singleUser.user_role"
+                                                               type="radio">&ensp;{{ item }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <span class="help-block">{{ errors.user_role[0] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 form-group">
+                                            <label>Loại hình <span style="color: #d81b1b">*</span></label>
+                                            <select class="form-control" ng-model="data.singleUser.type_id">
+                                                <option value="">-- Chọn loại hình --</option>
+                                                <option ng-repeat="item in data.listType" ng-value="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <span class="help-block">{{ errors.type_id[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Lĩnh vực <span style="color: #d81b1b">*</span></label>
+                                            <select class="form-control" ng-model="data.singleUser.spec_id">
+                                                <option value="">-- Chọn lĩnh vực --</option>
+                                                <option ng-repeat="item in data.listSpec" ng-value="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <span class="help-block">{{ errors.spec_id[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Họ tên cá nhân</label>
+                                            <input ng-model="data.singleUser.personal_name" class="form-control"
+                                                   placeholder="Họ tên cá nhân...">
+                                            <span class="help-block">{{ errors.personal_name[0] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-4 form-group">
+                                            <label>Chức vụ</label>
+                                            <input ng-model="data.singleUser.user_job_title" class="form-control"
+                                                   placeholder="Nhập chức vụ...">
+                                            <span class="help-block">{{ errors.user_job_title[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Website</label>
+                                            <input ng-model="data.singleUser.enterprise_website" class="form-control"
+                                                   placeholder="Nhập website...">
+                                            <span class="help-block">{{ errors.enterprise_website[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Ảnh đại diện:</label>
+                                            <button style="margin-left:10px;" id="user_button_upload" class="btn btn-light btn-sm">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                                &ensp;Tải ảnh lên
+                                            </button>
+                                            <input id="user_input_upload" style="display: none;" type="file">
+                                            <div id="user_preview_image" style="margin-top:5px"></div>
+                                            <span class="help-block">{{ errors.user_avatar[0] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-4 form-group">
+                                            <label>Tỉnh/Thành phố <span style="color: #d81b1b">*</span></label>
+                                            <select class="form-control" ng-change="actions.changeDistrict()"
+                                                    ng-model="data.singleUser.province_id">
+                                                <option value="">-- Chọn Tỉnh/Thành phố --</option>
+                                                <option ng-repeat="item in data.listProvince" ng-value="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <span class="help-block">{{ errors.province_id[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Quận/Huyện <span style="color: #d81b1b">*</span></label>
+                                            <select class="form-control" ng-change="actions.changeVillage()"
+                                                    ng-model="data.singleUser.district_id">
+                                                <option value="">-- Chọn Quận/Huyện --</option>
+                                                <option ng-repeat="item in data.listDistrict" ng-value="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <span class="help-block">{{ errors.district_id[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Xã/Phường <span style="color: #d81b1b">*</span></label>
+                                            <select class="form-control" ng-model="data.singleUser.village_id">
+                                                <option value="">-- Chọn Phường/Xã --</option>
+                                                <option ng-repeat="item in data.listVillage" ng-value="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <span class="help-block">{{ errors.village_id[0] }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-md-4 form-group">
+                                            <label>Địa chỉ cụ thể</label>
+                                            <input ng-model="data.singleUser.user_address" class="form-control"
+                                                   placeholder="Nhập địa chỉ cụ thể...">
+                                            <span class="help-block">{{ errors.user_address[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Điện thoại <span style="color: #d81b1b">*</span></label>
+                                            <input ng-model="data.singleUser.user_phone" class="form-control"
+                                                   placeholder="Nhập số điện thoại...">
+                                            <span class="help-block">{{ errors.user_phone[0] }}</span>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label>Thứ tự hiển thị</label>
+                                            <input type="number" min="0" ng-model="data.singleUser.user_order"
+                                                   class="form-control" placeholder="Nhập thứ tự hiển thị...">
+                                            <span class="help-block">{{ errors.user_order[0] }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="checkbox mt-3">
+                                        <label class="text-center">
+                                            <input type="checkbox" ng-true-value="1" ng-false-value="0"
+                                                   ng-model="data.singleUser.user_status"/> Hoạt động
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox" ng-if="loggedInUser.user_is_admin == 1">
+                                        <label class="text-center">
+                                            <input type="checkbox" ng-true-value="1" ng-false-value="0"
+                                                   ng-model="data.singleUser.user_is_admin"/> Phân quyền admin
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox" ng-if="loggedInUser.user_is_admin == 1">
+                                        <label class="text-center">
+                                            <input type="checkbox" ng-true-value="1" ng-false-value="0"
+                                                   ng-model="data.singleUser.verified"/> Tài khoản đã xác thực
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--#tab group-->
+                            <div ng-if="loggedInUser.user_is_admin === 1" id="tab-group" class="tab-pane fade">
+                                <div class="box-body ">
+                                    <div class="all-ou">
+                                        <ul style="list-style: none;margin-top: 10px;">
+                                            <li style="cursor:pointer"
+                                                ng-repeat="group in data.listGroup"
+                                                ng-click="group.checked = !group.checked"
+                                                ng-class="group.checked ? 'bg-blue' : ''">
+                                                <i class="fa fa-group"></i>
+                                                {{ group.group_name }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End tab group-->
+
+                            <!--#tab permit-->
+                            <div id="tab-permit" class="tab-pane fade">
+                                <div class="modal-body full_box">
+                                    <div class="box" ng-repeat="permit in data.listPermit">
+                                        <div class="box-header with-border">
+                                            <h5>{{ permit.label }}</h5>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="form-group" style="padding: 0px 20px">
+                                                <ul style="list-style: none">
+                                                    <li ng-repeat="permitInfo in permit.permit"
+                                                        ng-click="permitInfo.checked = !permitInfo.checked"
+                                                        ng-class="permitInfo.checked ? 'bg-info text-white' : ''">
+                                                        {{ $index + 1 }}. {{ permitInfo.label }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End tab permit-->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-if="data.isInsert" ng-click="actions.insertUser()"
+                            class="btn btn-primary btn-sm btn-social"><i class="bx bx-save"></i> Thêm mới
+                    </button>
+                    <button ng-if="!data.isInsert" ng-click="actions.updateUser()"
+                            class="btn btn-primary btn-sm btn-social"><i class="bx bx-save"></i> Cập nhật
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm btn-social" data-bs-dismiss="modal"><i class="bx bx-x-circle"></i> Hủy
+
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div id="modal_reset_passwword" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="color: #fff;">
+                    <h4 class="modal-title">Reset mật khẩu tất cả người dùng</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group fr_unit_name">
+                                <label for="txt_unit_name">Mật khẩu mới <span style="color: #d81b1b">*</span></label>
+                                <input type="password" ng-model="data.passwordReset"
+                                       class="form-control"
+                                       placeholder="Mật khẩu mới"/>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm btn-social" ng-click="actions.resetPassword()"><i class="fa fa-edit"></i>
+                        Cập nhật
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm btn-social" data-bs-dismiss="modal"><i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</section>
+<!-- /.content -->

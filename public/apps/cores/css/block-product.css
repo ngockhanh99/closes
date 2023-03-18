@@ -1,0 +1,236 @@
+.block-bg {
+    width: 300px;
+    height: 400px;
+    background-color: #f5f5f5f5;
+    padding-top: 10px;
+
+}
+
+.block-product {
+    width: 188px;
+    margin: auto;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 10%);
+    border-radius: 0.125rem;
+    transition: transform .1s cubic-bezier(.4, 0, .6, 1), box-shadow .1s cubic-bezier(.4, 0, .6, 1);
+    background: #fff;
+    overflow: visible;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+}
+
+.bl-top {
+    position: relative;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .87);
+    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 188px;
+    height: 188px;
+
+}
+
+.bl-yeuthich {
+    position: absolute;
+    left: 0;
+    top: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+.bl-yeuthich-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 0.9375rem;
+    font-size: .5625rem;
+    line-height: .6875rem;
+    font-weight: 500;
+    padding: 0 4px;
+    border-top-right-radius: 0.125rem;
+    border-bottom-right-radius: 0.125rem;
+    background: currentColor;
+    left: -0.1875rem;
+    color: rgb(242, 82, 32);
+}
+
+.bl-yeuthich-text:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: -0.1875rem;
+    border-top: 0.1875rem solid;
+    border-left: 0.1875rem solid transparent;
+    filter: brightness(60%);
+}
+
+.bl-yeuthich-text span {
+    color: #fff;
+    font-size: .75rem;
+    line-height: .875rem;
+}
+
+.bl-sale {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.bl-sale-text1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    font-weight: 400;
+    line-height: .8125rem;
+    color: #ee4d2d;
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+.bl-sale-text {
+    width: 36px;
+    height: 32px;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    padding: 4px 2px 3px;
+    font-weight: 700;
+    background-color: rgba(255, 212, 36, .9);
+}
+
+.bl-sale-text:after {
+    content: "";
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: -4px;
+    position: absolute;
+    border-color: transparent rgba(255, 212, 36, .9);
+    border-style: solid;
+    border-width: 0 18px 4px;
+}
+
+.text-down {
+    color: #fff;
+    font-size: 11px;
+}
+
+.bl-img .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    z-index: 0;
+}
+
+.bl-img .img img {
+    width: 100%;
+    height: 188px;
+    object-fit: cover;
+}
+
+.bl-text {
+    padding: 10px;
+}
+
+.text-content {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 14px;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.bl-bot {
+    padding: 0.3125rem 0 0;
+    display: flex;
+    height: 1.5rem;
+    align-items: center;
+    overflow: hidden;
+}
+
+.price {
+    display: inline;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.price1 {
+    flex: 1 0 auto;
+    max-width: 75%;
+    color: #ee4d2d;
+}
+
+.sold, .price1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sold {
+    color: rgba(0, 0, 0, .87);
+    margin-left: 0.3125rem;
+    font-size: .75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-sale {
+    background-color: rgb(246 145 19);
+    color: #fff;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0 3px;
+    display: inline-block;
+    margin: 0;
+}
+
+.bl-date {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: inline-block;
+    padding: 3px 4px;
+    background-color: rgb(238 77 45);
+    color: #ffffff;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.bl-top:hover .img-box {
+    opacity: 1;
+}
+
+.img-box {
+    width: 100%;
+    height: 188px;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: 0.3s;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

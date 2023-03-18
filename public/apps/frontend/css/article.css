@@ -1,0 +1,27 @@
+.news-kh {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-news {
+    margin-bottom: 5px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.title-article {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: justify;
+    letter-spacing: -0.165px;
+
+    color: #019341;
+}
+
+.time-news {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}

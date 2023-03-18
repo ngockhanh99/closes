@@ -1,0 +1,77 @@
+table.treetable {
+    border: 1px solid #888;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1;
+    margin: 0;
+    width: 100%;
+}
+table.treetable tr.branch {
+    background-color: #fff;
+}
+table.treetable span {
+    padding: 0;
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+    border: 1px solid #979797;
+}
+
+thead>tr{
+    border: 1px solid #979797;
+}
+
+.box-body> .table {
+    margin-bottom: 0;
+    border: 1px solid #979797;
+}
+
+.box-body> .tab-pane> .table {
+    margin-bottom: 0;
+    border: 1px solid #979797;
+}
+
+/*thead{*/
+    /*background-color: #d16300 !important;*/
+    /*color: #ffffff;*/
+/*}*/
+
+/*tr>th{*/
+    /*background-color: #d16300 !important;*/
+    /*color: #ffffff;*/
+/*}*/
+
+.table-form-question .indenter{
+    padding-left: 0px !important;
+}
+.table-form-question .level2 td:first-child{
+    padding-left: 25px !important;
+}
+.table-form-question .level3 td:first-child{
+    padding-left: 50px !important;
+}
+.table-form-question .level4 td:first-child{
+    padding-left: 75px !important;
+}
+.table-form-question .level5 td:first-child{
+    padding-left: 100px !important;
+}
+
+.table-sipas-form-question .level2 td:nth-child(2){
+    /*padding-left: 25px !important;*/
+}
+.table-sipas-form-question .level3 td:nth-child(2){
+    padding-left: 25px !important;
+}
+.table-sipas-form-question .level4 td:nth-child(2){
+    padding-left: 50px !important;
+}
+.table-sipas-form-question .level5 td:nth-child(2){
+    padding-left: 75px !important;
+}
+

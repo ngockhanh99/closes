@@ -1,0 +1,49 @@
+ul li{
+        list-style-type: none;
+    }
+    .dropdown-menu >li{border-bottom: 1px solid #ddd;}
+    .dropdown-menu >li:last-child{border-bottom: 0;}
+    .text_center{text-align: center;}
+    .full_box{
+        background-color: #fff !important;
+        padding: 15px 0px 0px 0px;
+    }
+    #modal_decentralization .box{margin: 0;border-radius: 0;}
+    #modal_decentralization .box-header{
+        background-color: #d2d6de;
+        color: #000;
+    }
+    #modal_decentralization .box-header>h3{font-size: 16px;}
+    #box_file .active{
+        background: #eeeeee;
+    }
+    #box_file .select_folder a{
+        color: #000;
+    }
+    #box_file .select_folder i{
+        color: #FBC02D;
+    }
+    #box_file .select_folder ul>li:hover{
+        background: #ddd;
+        cursor: pointer;
+    }
+    #box_file ul li{
+        padding: 5px 0px;
+    }
+    .title{
+        color: #67ce1a;
+        font-size: 16px;
+        text-align: center;
+    }
+    .action{color: #10c51e;}
+    .not-action{color: #c6c6c6;}
+    .scroll{
+        overflow: auto; 
+        height: 200px;
+    }
+    .style_title{
+        background: #ddd;
+        color: #000;
+        padding-left: 15px;
+        font-weight: 600;
+    }

@@ -1,0 +1,28 @@
+@media screen {
+    #printSection {
+        display: none !important;
+    }
+}
+
+@media print {
+    .wrapper
+    {
+        display: none !important;
+    }
+    #printSection{
+        display: block !important;
+    }
+    .print-show{
+        display: block;
+    }
+    .print-hide,input,button,.btn{
+        display: none !important;
+    }
+    .box.box-primary {
+        border-top: 0px;
+    }
+    a[href]:after {
+        content: none !important;
+    }
+
+}

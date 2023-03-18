@@ -1,0 +1,196 @@
+<style>
+    #tab-user li {
+        cursor: pointer;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+
+    #tab-permit li {
+        margin-bottom: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .scroll {
+        overflow: auto;
+    }
+</style>
+
+<div class="card margin-bottom0">
+    <div class="card-body padding-bottom0 padding0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-title">
+                    <div class="box-title-text"><span>Danh sách Nhóm người sử dụng</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body pt-1">
+        <div class="row">
+            <div class="col-md-4 pt-1">
+                <button
+                    class="btn btn-sm btn-social btn-primary"
+                    ng-click="actions.showModalDetail(0);">
+                    <i class="fa fa-plus"></i> Thêm nhóm NSD
+                </button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <colgroup>
+                <col width="70px" />
+                <col width="*" />
+                <col width="20%" />
+                <col width="15%" />
+                <col width="15%" />
+            </colgroup>
+            <thead class="table-green">
+                <tr>
+                    <th class="text-center align-middle">STT</th>
+                    <th class="text-center align-middle">Tên nhóm</th>
+                    <th class="text-center align-middle">Mã nhóm</th>
+                    <th class="text-center align-middle">Trạng thái</th>
+                    <th class="text-center align-middle">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.allGroups">
+                    <td class="text-center align-middle">{{$index + 1}}</td>
+                    <td class="align-middle">
+                        <a
+                            href="javascript:;"
+                            ng-click="actions.showModalDetail(item.group_id)">
+                            {{item.group_name}}
+                        </a>
+                    </td>
+                    <td class="align-middle">{{item.group_code}}</td>
+                    <td class="text-center align-middle">
+                        <span class="badge bg-info" ng-if="item.group_status">Hoạt động</span>
+                        <span class="badge bg-warning" ng-if="!item.group_status">Không hoạt động</span>
+                    </td>
+                    <td class="text-center align-middle">
+                        <button type="button" class="btn btn-sm btn-primary"
+                            ng-click="actions.showModalDetail(item.group_id)"
+                            ng-show="actions.checkGroupCode(item.group_code)">Sửa
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                            ng-click="actions.deleteGroup(item.group_id)"
+                            ng-show="actions.checkGroupCode(item.group_code)">Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Main content -->
+
+<!--modal thêm mới nhóm người sử dụng-->
+<div id="modal_groupUser" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="color: #fff">
+                <h4 ng-if="!data.groupInfo.group_id" class="modal-title">
+                    Thêm mới nhóm người sử dụng
+                </h4>
+                <h4 ng-if="data.groupInfo.group_id" class="modal-title">
+                    Chi tiết nhóm người sử dụng
+                </h4>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="box-header with-border">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-group-info">Thêm mới
+                                /Thông tin chi tiết</a>
+                        </li>
+                        <!--<li><a data-toggle="tab" data-target="#tab-user">Thêm NSD</a></li>-->
+                        <li>
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-permit">Phân quyền</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-body tab-content">
+                    <!--Form thêm mới nhóm-->
+                    <div id="tab-group-info" class="tab-pane in active">
+                        <div class="box-body">
+                            <div
+                                class="form-group margin-top-15"
+                                ng-class="errors.groupUser.group_name ? 'has-error' : ''">
+                                <label for="txt_group_name">Nhập tên nhóm NSD
+                                    <span style="color: #d81b1b">*</span></label>
+                                <input type="text" class="form-control" id="txt_group_name"
+                                    ng-model="data.groupInfo.group_name" placeholder="Tên nhóm" />
+                                <span
+                                    class="help-block text-red"
+                                    ng-repeat="item in errors.groupUser.group_name">{{item}}</span>
+                            </div>
+                            <div class="form-group margin-top-15" ng-class="errors.groupUser.group_code ? 'has-error' : ''">
+                                <label for="txt_group_code">Nhập mã nhóm NSD
+                                    <span style="color: #d81b1b">*</span></label>
+                                <input type="text" class="form-control" id="txt_group_code"
+                                    ng-model="data.groupInfo.group_code" placeholder="Mã nhóm" />
+                                <span class="help-block text-red" ng-repeat="item in errors.groupUser.group_code">{{item}}</span>
+                            </div>
+                            <div class="checkbox mt-3">
+                                <label class="text-center">
+                                    <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="data.groupInfo.group_status" />
+                                    Hoạt động
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--#tab permit-->
+                    <div id="tab-permit" class="tab-pane fade">
+                        <div class="modal-body full_box">
+                            <div class="box" ng-repeat="permit in data.listPermit">
+                                <div class="box-header with-border">
+                                    <h5>{{permit.label}}</h5>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group" style="padding: 0px 20px">
+                                        <ul>
+                                            <li
+                                                ng-repeat="permitInfo in permit.permit"
+                                                ng-click="permitInfo.checked= !permitInfo.checked"
+                                                ng-class="permitInfo.checked ? 'bg-info text-white' : ''">
+                                                {{$index + 1}}. {{permitInfo.label}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--End tab permit-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    ng-if="!data.groupInfo.group_id"
+                    type="submit"
+                    class="btn btn-primary btn-sm btn-social"
+                    ng-click="actions.insertGroupUser()">
+                    <i class="fa fa-save"></i> Thêm mới
+                </button>
+                <button
+                    ng-if="data.groupInfo.group_id"
+                    type="submit"
+                    class="btn btn-primary btn-sm btn-social"
+                    ng-click="actions.editGroupUser()">
+                    <i class="fa fa-edit"></i> Cập nhật
+                </button>
+                <button type="button" class="btn btn-light btn-sm btn-social" data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i> Hủy
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

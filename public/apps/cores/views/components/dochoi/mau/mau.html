@@ -1,0 +1,134 @@
+<!-- Content Header (Page header) -->
+<div class="card margin-bottom0">
+    <div class="card-body padding-bottom0 padding0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-title">
+                    <div class="box-title-text"><span>Danh sách danh mục</span></div>
+                    <div class="box-title-layout">
+                        <div class="flex">
+                            <input type="text" class="form-control form-filter" ng-model="search.keyword"
+                                ng-enter="actions.search()" placeholder="Tìm kiếm theo tên ...">
+                        </div>
+                        <div class="flex text-right" style="margin-left: auto; max-width: 40px; height: 37px;">
+                            <button type="button" class="btn" ng-click="actions.search()">
+                                <i aria-hidden="true" class="fas fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4 mb-1">
+                <button class="btn btn-social btn-primary" ng-click="actions.showModal(true);">
+                    <i class="fa fa-plus"></i> Thêm mới
+                </button>
+            </div>
+        </div>
+        <table class="table table-bordered" id="unit_table">
+            <colgroup>
+                <col width="5%" />
+                <col width="*" />
+                <col width="20%" />
+                <col width="10%" />
+            </colgroup>
+            <thead class="table-green">
+                <tr>
+                    <th class="text-center align-middle">STT</th>
+                    <th class="text-center align-middle">Tên</th>
+                    <th class="text-center align-middle">Màu</th>
+                    <th class="text-center align-middle">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.listData">
+                    <td class="text-center align-middle">
+                        {{ $index + (search.page - 1) * search.per_page + 1 }}
+                    </td>
+                    <td class="align-middle">{{ item.name }}</td>
+                    <td class="text-center align-middle">
+                        <img src="{{item.media.filepath}}" alt="" width="160px" height="120px"
+                            style="object-fit: cover;">
+                    </td>
+                    <td class="text-center align-middle">
+                        <button type="button" class="btn btn-primary" ng-click="actions.showModal(false,$index)">
+                            Sửa
+                        </button>
+                        <button type="button" class="btn btn-danger" ng-click="actions.delete(item.id)">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <paginate-dir page="search.page" page-size="search.per_page" total="search.total"
+            paging-action="actions.gotoPage(page)">
+        </paginate-dir>
+    </div>
+</div>
+
+<div id="modal_single" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: #fff">
+
+                <h4 ng-if="data.isInsert" class="modal-title">
+                    Thêm mới màu
+                </h4>
+                <h4 ng-if="!data.isInsert" class="modal-title">
+                    Cập nhật màu
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
+                        <label for="txt_name">Tên màu</label>
+                        <input type="text" class="form-control" id="txt_name" ng-model="data.singleData.name"
+                            placeholder="Nhập tên" />
+                        <span class="help-block text-red">{{ errors.name[0] }}</span>
+                    </div>
+                    <div class="form-group padding-bottom30">
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="form-group col-md-12">
+                                    <div class="label-bt">
+                                        <i class="fa fa-link" aria-hidden="true"></i><label style="margin-left:5px">
+                                            Ảnh đính kèm&ensp;</label>
+                                        <button class="btn btn-sm btn-light" id="button_upload"><i class="fa fa-upload"
+                                                aria-hidden="true"></i>&ensp;Tải ảnh lên
+                                        </button>
+                                    </div>
+                                    <input accept=".jpg,.png,.jpeg" type="file" id="input_upload"
+                                        style="display: none;">
+                                    <div id="show_list_images"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-if="data.isInsert" type="submit" class="btn btn-primary btn-social"
+                    ng-click="actions.insert()">
+                    <i class="fa fa-save"></i> Thêm mới
+                </button>
+                <button ng-if="!data.isInsert" type="submit" class="btn btn-primary btn-social"
+                    ng-click="actions.update(data.singleData.id)">
+                    <i class="fa fa-edit"></i> Cập nhật
+                </button>
+                <button type="button" class="btn btn-light btn-social" data-bs-dismiss="modal">
+                    <i class="fa fa-close"></i> Hủy
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

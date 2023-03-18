@@ -1,0 +1,103 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Danh sách người sử dụng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#!/"><i class="fa fa-home"></i> Bảng điều khiển</a></li>
+        <li class="active"><i class="fa fa-user"></i> Tra cứu người sử dụng</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Danh sách người sử dụng</h3>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm pull-left" style="width: 200px;">
+                            <select class="form-control" ng-model="data.dataSearch.permit" ng-change="actions.changePage(1)">
+                                <option value="">--Chọn quyền--</option>
+                                <optgroup label="{{permit.label}}" ng-repeat="permit in data.listPermit">
+                                    <option ng-value="item.code" ng-repeat="item in permit.permit">{{item.label}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm  pull-left" style="width: 200px;">
+                            <input ng-model="data.dataSearch.keywords" ng-enter="actions.changePage(1)" type="text"
+                                   name="table_search" class="form-control" placeholder="Nhập tên NSD">
+                            <div class="input-group-btn">
+                                <button type="button" ng-click="actions.changePage(1)" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover dataTable" style="margin-bottom: 0px;">
+                                <colgroup>
+                                    <col width="70px" >
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="20%"/>
+                                    <col width="*"/>
+                                </colgroup>
+                                <thead>
+                                <tr class="table-green">
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Tên người sử dụng</th>
+                                    <th class="text-center">Tên đăng nhập</th>
+                                    <th class="text-center">Thuộc đơn vị</th>
+                                    <th class="text-center">Thuộc nhóm</th>
+                                    <th class="text-center">Quyền</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in data.allUsers">
+                                    <td class="text-center align-middle">{{$index + 1}}</td>
+                                    <td>{{item.user_name}}</td>
+                                    <td>{{item.user_login_name}}</td>
+                                    <td>{{item.ou_full}}</td>
+                                    <td>
+                                        <p ng-repeat="permit in item.groups_name">- {{permit}}</p>
+                                    </td>
+                                    <td>
+                                        <p ng-repeat="permit in item.permits_name">- {{permit}}</p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix" >
+                    <div class="col-md-4 col-xs-12">
+                        <i>Tổng số: </i><b>{{data.dataSearch.total}}</b>
+                    </div>
+                    <div class="col-md-8 col-xs-12" align="right"
+                         paging
+                         page="data.dataSearch.page"
+                         page-size="data.dataSearch.page_size"
+                         total="data.dataSearch.total"
+                         paging-action="actions.changePage(page)"
+                         scroll-top="true"
+                         hide-if-empty="true"
+                         show-prev-next="true"
+                         show-first-last="true"
+                         text-first="Đầu"
+                         text-last="Cuối"
+                         text-next="Sau"
+                         text-prev="Trước">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

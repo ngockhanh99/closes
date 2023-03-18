@@ -1,0 +1,47 @@
+
+<!--add new from question-->
+<div class="card margin-bottom0">
+    <div class="card-body padding-bottom0 padding0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-title">
+                    <div class="box-title-text"><span>Cấu hình hệ thống</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body pt-1">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="">Danh sách cấu hình</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-5" style="margin: auto;">
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group magintop15">
+                                            <div class="checkbox">
+                                                <label class="col-md-4">Cho phép thay đổi mật khẩu</label>
+                                                <input type="checkbox" ng-model="data.config.CHANGE_PASSWORD" id="checkbox1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div>
+                            <button type="button" ng-click="actions.update()" class="btn btn-primary w-md">Cập nhật</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

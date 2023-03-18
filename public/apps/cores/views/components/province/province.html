@@ -1,0 +1,184 @@
+
+<div class="card margin-bottom0">
+    <div class="card-body padding-bottom0 padding0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-title">
+                    <div class="box-title-text"><span>Danh sách Tỉnh/Thành phố</span></div>
+                    <div class="box-title-layout">
+                        <div class="flex">
+                            <input type="text" class="form-control form-filter" ng-model="search.keyword"
+                                ng-enter="actions.search()"
+                                placeholder="Tìm kiếm theo tên ...">
+                        </div>
+                        <div class="flex text-right" style="margin-left: auto; max-width: 40px; height: 37px;">
+                            <button type="button" class="btn"
+                                ng-click="actions.search()">
+                                <i aria-hidden="true" class="fas fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<div class="card mt-3">
+    <div class="card-body pt-1">
+        <div class="row">
+            <div class="col-md-4 mb-1">
+                <button
+                    class="btn btn-sm btn-social btn-primary"
+                    ng-click="actions.showModalProvince(true);">
+                    <i class="fa fa-plus"></i> Thêm mới
+                </button>
+            </div>
+        </div>
+        <table class="table table-bordered" id="province_table">
+            <colgroup>
+                <col width="5%" />
+                <col width="*" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="5%" />
+                <col width="15%" />
+            </colgroup>
+            <thead class="table-green">
+                <tr>
+                    <th class="text-center align-middle">STT</th>
+                    <th class="text-center align-middle">Tên Tỉnh/Thành phố</th>
+                    <th class="text-center align-middle">Mã</th>
+                    <th class="text-center align-middle">Trạng thái</th>
+                    <th class="text-center align-middle">Thứ tự hiển thị</th>
+                    <th class="text-center align-middle">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.listProvince">
+                    <td class="text-center align-middle">
+                        {{ $index + (search.page - 1) * search.limit + 1 }}
+                    </td>
+                    <td class="align-middle">
+                        <a
+                            href="javascript:"
+                            ng-click="actions.showModalProvince(false,$index)">
+                            {{ item.name }}
+                        </a>
+                    </td>
+                    <td class="text-center align-middle">{{ item.code }}</td>
+                    <td
+                        class="text-center align-middle"
+                        ng-bind="(item.status == 1) ? 'Hoạt động' : 'Không hoạt động'"></td>
+                    <td class="text-center align-middle" ng-bind="item.order"></td>
+                    <td class="text-center align-middle">
+                        <button
+                            class="btn btn-primary btn-sm btn-social"
+                            ng-click="actions.showModalProvince(false,$index)"
+                            type="button">
+                            Sửa
+                        </button>
+                        <button
+                            class="btn btn-danger btn-sm btn-social"
+                            ng-click="actions.deleteProvince(item.id)"
+                            type="button">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <paginate-dir page="search.page" page-size="search.limit"
+      total="search.total" paging-action="actions.gotoPage(search.page)">
+    </paginate-dir>
+    </div>
+</div>
+
+<div id="modal_single" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: #fff">
+                <h4 class="modal-title" ng-if="data.statusInsert">
+                    Thêm mới Tỉnh/Thành phố
+                </h4>
+                <h4 class="modal-title" ng-if="!data.statusInsert">
+                    Chi tiết Tỉnh/Thành phố
+                </h4>
+                <button
+                    aria-label="Close"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    type="button">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
+                        <label for="txt_name">Tên Tỉnh/Thành phố<span style="color: #d81b1b">*</span></label>
+                        <input
+                            id="txt_name"
+                            class="form-control"
+                            ng-model="data.singleProvince.name"
+                            placeholder="Nhập tên Tỉnh/Thành phố"
+                            type="text" />
+                        <span class="help-block text-red">{{ errors.name[0] }}</span>
+                    </div>
+                    <div class="form-group mt-3" ng-class="errors.code ? 'has-error' : ''">
+                        <label for="txt_name">Mã<span style="color: #d81b1b">*</span></label>
+                        <input
+                            id="txt_name"
+                            class="form-control"
+                            ng-model="data.singleProvince.code"
+                            placeholder="Nhập mã Tỉnh/Thành phố"
+                            type="text"
+                            />
+                        <span class="help-block text-red">{{ errors.code[0] }}</span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="txt_order">Thứ tự hiển thị</label>
+                        <input
+                            id="txt_order"
+                            class="form-control"
+                            min="0"
+                            ng-model="data.singleProvince.order"
+                            placeholder="Nhập thứ tự hiển thị"
+                            type="number"
+                            />
+                    </div>
+                    <div class="checkbox mt-3">
+                        <label class="text-center">
+                            <input
+                                ng-false-value="0"
+                                ng-model="data.singleProvince.status"
+                                ng-true-value="1"
+                                type="checkbox"
+                                />
+                            Hoạt động
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    class="btn btn-primary btn-sm btn-social"
+                    ng-click="actions.insertProvince()"
+                    ng-if="data.statusInsert"
+                    type="submit">
+                    <i class="fa fa-save"></i> Thêm mới
+                </button>
+                <button
+                    class="btn btn-primary btn-sm btn-social"
+                    ng-click="actions.updateProvince(data.singleProvince.id)"
+                    ng-if="!data.statusInsert"
+                    type="submit">
+                    <i class="fa fa-edit"></i> Cập nhật
+                </button>
+                <button class="btn btn-light btn-sm btn-social" data-bs-dismiss="modal" type="button">
+                    <i class="fa fa-close"></i> Hủy
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

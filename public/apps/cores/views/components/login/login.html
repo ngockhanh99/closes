@@ -1,0 +1,47 @@
+<img src="" />
+<div class="login-box">
+    <div class="login-logo">
+        <b>Par Index</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Đăng nhập</p>
+        <div  ><span style="color:#f83632" class="help-block" ng-bind="errors.msgErr[0]"></span></div>
+        <form action="./dashboard-canbo.html" method="post">
+            <div class="form-group has-feedback" ng-class="errors.user_login_name ? 'has-error' : ''">
+                <input ng-enter="actions.login()"  type="text" class="form-control" placeholder="Nhập tên tài khoản  ..." ng-model="data.user_login_name" >
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" ng-bind="errors.user_login_name[0]"></span>
+            </div>
+            <div class="form-group has-feedback" ng-class="errors.password ? 'has-error' : ''">
+                <input  ng-enter="actions.login()"  type="password" class="form-control" placeholder="Nhập mật khẩu ..." ng-model="data.password" >
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="help-block" ng-bind="errors.password[0]"></span>
+            </div>
+            <div class="row" style="text-align: center;">
+                <!-- /.col -->
+                <button type="button" ng-click="actions.login()" class="btn btn-primary btn-flat">Đăng nhập</button>
+                <!-- /.col -->
+            </div>
+            <br/>
+
+            <label class="font-normal">
+                <i class="fa fa-info-circle" style="color: #e88a05"></i>
+                Khi có sự cố đề nghị bật và sử dụng phần mềm TeamView để được hỗ trợ <a target="_blank" href="https://www.teamviewer.com/vi/index.aspx">(dowload tại đây)</a>.
+            </label>
+            <label class="font-normal">
+                <i class="fa  fa-credit-card" style="color: #5299b7"></i>
+                Bộ phận hỗ trợ phần mềm - Tel: 024-668 22443
+            </label>
+        </form>
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+<footer class="text-center hidden-xs hidden-sm" id="footerLogin">
+    <h2 style="font-size:14px; margin:5px"> <b>Đơn vị quản lý:</b> Sở Nội vụ tỉnh Sơn La</h2>
+    <h2 style="font-size:14px; margin:5px"> <b>Địa chỉ:</b> Đường Khau Cả, Tổ 8, Phường Tô Hiệu, Thành phố Sơn La</h2>
+    <h2 style="font-size:14px; margin:5px"><b> ĐT</b>: Văn phòng sở (022).3752.630 - Phòng CCHC (022).3754288 FAX: (022).3855.743 </h2>
+    <h2 style="font-size:14px; margin:5px"> <b>E-mail</b>: snv@sonla.gov.vn Website:http://sonoivu.sonla.gov.vn</h2>
+</footer>

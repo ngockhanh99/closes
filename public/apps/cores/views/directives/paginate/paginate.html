@@ -1,0 +1,26 @@
+<div class="row mt-2">
+    <div class="col-xs-12 col-md-4">
+        <div class="dataTables_info mt-1">Tổng số: {{total}} bản ghi</div>
+    </div>
+    <div class="col-md-8 col-xs-12 text-right" style="display: flex;justify-content: end;">
+        <div style="display: inline-block;vertical-align: top;margin-right:15px;">
+            Hiển thị:
+            <select ng-change="actions.pagingAction(1)" ng-model="pageSize"
+                    style="height:32px;width:50px;border:1px solid #ddd;outline: none">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            mục
+        </div>
+        <paging page="page" page-size="pageSize"
+                total="total" paging-action="actions.pagingAction(page)"
+                ul-class="pagination justify-content-end" , scroll-top="true" hide-if-empty="true"
+                show-prev-next="true" show-first-last="true" text-first="Đầu" text-last="Cuối" text-next="Sau"
+                text-prev="Trước" show-first-last="true">
+        </paging>
+    </div>
+</div>

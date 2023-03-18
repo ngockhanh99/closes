@@ -1,0 +1,82 @@
+body {
+    background-image: url('../images/backgroundLogin.jpg');
+    background-size: cover;
+}
+.register-section {
+    max-width:600px;
+    margin: 50px auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px 0 #1d2030;
+    padding-bottom: 15px;
+    font-size:15px;
+    background: #ffffff;
+}
+.login-section {
+    max-width: 460px;
+    margin: 50px auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px 0 #1d2030;
+    padding-bottom: 15px;
+    font-size:15px;
+    background: #ffffff;
+}
+.logo-section img {
+    margin: 0px auto;
+    display: block;
+}
+.header-register {
+    padding:15px;
+    border-bottom:1px solid #fff;
+    text-align:center;
+    background-color: #019341;
+    border-radius: 5px;
+}
+.header-register .title {
+    font-size:18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+}
+.main-register {
+    padding:15px 20px;
+}
+.form-label {
+    color:#fff;
+}
+.input-code {
+    height:70px;
+    width: 60px!important;
+    font-size:32px!important;
+    text-align: center;
+    display: inline-block;
+    margin-left: 5px;
+    color: #019341!important;
+}
+.register-button {
+    background-color: #019341;
+    width: 200px;
+    padding: 7px 0px;
+    border-radius: 100px;
+    border: 1px solid grey;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 0px auto;
+}
+.button-section .button-back {
+    border-radius: 10px;
+    margin-top: 5px;
+    background-color: transparent;
+    border: none;
+    display: block;
+    margin: 0px auto;
+}
+.reset-section .title {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: #019341;
+    font-weight: bold;
+    margin-top: 15px;
+}
+

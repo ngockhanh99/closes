@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#body {
+    margin: auto;
+    background: #A2A2A2;
+    height: 1000px;
+}
+
+.body-h1 {
+    font-style: normal;
+    font-family: 'Helvetica-Bold';
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+    color: #1B1B1B;
+    text-align: center;
+    margin-top: 0;
+}
+
+.body-h2 {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 28px;
+    color: #666666;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    width: 570px;
+    margin: auto;
+}
+
+.khoi {
+    width: 188px;
+    height: 48px;
+    color: #666666;
+    border-radius: 8px 8px 0 0;
+    margin-right: 3px;
+    cursor: pointer;
+    background: #e5e5e5;
+}
+
+.khoi-bo {
+    width: 100%;
+    height: 48px;
+    color: #666666;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    background: #E5E5E5;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 48px;
+    letter-spacing: -0.2px;
+    text-align: center;
+}
+.captinh {
+    display: flex;
+    height: 100%;
+}
+
+.captinh img {
+    width: 24px;
+    height: 19px;
+    margin: 14px 0 0 46.5px;
+}
+
+.captinh p {
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 48px;
+    letter-spacing: -0.2px;
+    margin: 0 0 0 10px;
+}
+
+.noidung {
+    background: #FFFFFF;
+    border-radius: 0 0 8px 8px;
+    padding: 60px 95px 60px 95px;
+    width: 570px;
+    margin: 0 auto;
+}
+
+.choose-unit {
+    /* min-height: 100px; */
+}
+
+.nd-captinh {
+    width: 370px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 7.84px;
+}
+
+.noidung button {
+    width: 100%;
+    height: 44px;
+    background: #BB1819;
+    border-radius: 8px;
+    border: none;
+    margin-top: 8px;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    align-items: center;
+    color: #FFFFFF;
+    position: relative;
+}
+
+.noidung button span {
+    position: absolute;
+    font-size: 11px;
+    top: 11px;
+    right: 17px;
+}
+
+.hien {
+    opacity: 1;
+    visibility: visible;
+    animation: dilen 0.4s forwards;
+}
+
+@keyframes dilen {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mautrang {
+    background: #FFFFFF;
+    color: #BB1819;
+}
+
+#position_0 {
+    padding-top: 95px;
+}
+
+.padding-bot-8 {
+    padding-bottom: 8px;
+}
+
+.img-do {
+    display: none;
+}
+
+.mautrang .img-den {
+    display: none;
+}
+
+.mautrang .img-do {
+    display: block;
+}
+.margin-top-15{
+    margin-top: 15px;
+}
+
+
+
+/* hoan thanh */
+.hoanthanh{
+}
+.hoanthanh figure{
+    text-align: center;
+}
+.text-hoanthanh{
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.8px;
+    color: #1B1B1B;
+    margin-top: 40px;
+}
+.hoanthanh-h1{
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #666666;
+    margin: 10px 0 40px 0;
+}
+.hoanthanh-button{
+    width: 270px;
+    height: 44px;
+    background: #BB1819;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+.hoanthanh-button button{
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    height: 44px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.radio-icon-w-1{
+    width: 80px;
+}
+.radio-icon-w-2{
+    width: 160px;
+}
+.radio-icon-w-3{
+    width: 240px;
+}
+.radio-icon-w-4{
+    width: 320px;
+}
+.radio-icon-w-5{
+    width: 400px;
+}
+.radio-icon-w-6{
+    width: 480px;
+}
+.radio-icon-w-7{
+    width: 560px;
+}
+.radio-icon-w-8{
+    width: 640px;
+}
+.radio-icon-w-9{
+    width: 720px;
+}
+
+/*.khoi:first-child {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.khoi:not(:first-child) {*/
+/*    flex: 1;*/
+/*}*/

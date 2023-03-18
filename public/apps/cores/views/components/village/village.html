@@ -1,0 +1,154 @@
+<!-- Content Header (Page header) -->
+<div class="card margin-bottom0">
+  <div class="card-body padding-bottom0 padding0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box-title">
+          <div class="box-title-text"><span>Danh sách Phường/Xã</span></div>
+          <div class="box-title-layout">
+            <div class="flex">
+              <input type="text" class="form-control form-filter" ng-model="search.keyword"
+                ng-enter="actions.search()"
+                placeholder="Tìm kiếm theo tên ...">
+            </div>
+            <div class="flex text-right" style="margin-left: auto; max-width: 40px; height: 37px;">
+              <button type="button" class="btn"
+                ng-click="actions.search()">
+                <i aria-hidden="true" class="fas fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4 mb-1">
+        <button
+          class="btn btn-sm btn-social btn-primary"
+          ng-click="actions.showModalVillage(true);">
+          <i class="fa fa-plus"></i> Thêm mới
+        </button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <colgroup>
+        <col width="70px" />
+        <col width="*" />
+        <col width="15%" />
+        <col width="15%" />
+        <col width="15%" />
+      </colgroup>
+      <thead class="table-green">
+        <tr>
+          <th class="text-center align-middle">STT</th>
+          <th class="text-center align-middle">Tên phường/xã</th>
+          <th class="text-center align-middle">Thuộc Quận/Huyện<n></th>
+            <th class="text-center align-middle">Mã<n></th>
+              <th class="text-center align-middle">Trạng thái</th>
+              <th class="text-center align-middle">Thứ tự hiển thị</th>
+              <th class="text-center align-middle">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in data.listData">
+              <td class="text-center align-middle">{{$index + 1}}</td>
+              <td class="align-middle">
+                <a
+                  href="javascript:;"
+                  ng-click="actions.showModalVillage(false,$index)">
+                  {{item.name}}
+                </a>
+              </td>
+              <td class="align-middle">{{item.district.name}}</td>
+              <td class="align-middle">{{item.code}}</td>
+              <td
+                class="text-center align-middle"
+                ng-bind="(item.status == 1) ? 'Hoạt động' : 'Không hoạt động'"></td>
+              <td class="text-center align-middle" ng-bind="item.order"></td>
+              <td class="text-center align-middle">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  ng-click="actions.showModalVillage(false,$index)">
+                  Sửa
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  ng-click="actions.deleteVillage(item.id)">
+                  Xóa
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <paginate-dir page="search.page" page-size="search.limit"
+          total="search.total" paging-action="actions.gotoPage(search.page)">
+        </paginate-dir>
+      </div>
+    </div>
+    <!-- Main content -->
+    
+      <div id="modal_single" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="color: #fff;">
+              
+              <h4 ng-if="data.statusInsert" class="modal-title">Thêm mới Phường/Xã</h4>
+              <h4 ng-if="!data.statusInsert" class="modal-title">Chi tiết Phường/Xã</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="box-body">
+                <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
+                  <label for="txt_name">Tên Phường/Xã<span style="color: #d81b1b">*</span></label>
+                  <input type="text" class="form-control" id="txt_name" ng-model="data.singleVillage.name"
+                    placeholder="Nhập tên Phường/Xã">
+                  <span class="help-block text-red">{{errors.name[0]}}</span>
+                </div>
+                <div class="form-group mt-3" ng-class="errors.name ? 'has-error' : ''">
+                  <label for="txt_name">Thuộc Quận/Huyện<span style="color: #d81b1b">*</span></label>
+                  <select class="form-control" ng-model="data.singleVillage.district_id">
+                    <option value="">-- Chọn Quận/Huyện --</option>
+                    <option ng-repeat="item in data.listDistrict" ng-value="item.id">{{item.name}}</option>
+                  </select>
+                  <span class="help-block text-red">{{errors.district_id[0]}}</span>
+                </div>
+                <div class="form-group mt-3" ng-class="errors.code ? 'has-error' : ''">
+                  <label for="txt_name">Mã<span style="color: #d81b1b">*</span></label>
+                  <input type="text" class="form-control" id="txt_name" ng-model="data.singleVillage.code"
+                    placeholder="Nhập mã Phường/Xã">
+                  <span class="help-block text-red">{{errors.code[0]}}</span>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="txt_order">Thứ tự hiển thị</label>
+                  <input type="number" class="form-control" id="txt_order" ng-model="data.singleVillage.order"
+                    placeholder="Nhập thứ tự hiển thị">
+                </div>
+                <div class="checkbox mt-3">
+                  <label class="text-center">
+                    <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="data.singleVillage.status" /> Hoạt động
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button ng-if="data.statusInsert" type="submit" class="btn btn-primary btn-sm btn-social"
+                ng-click="actions.insertVillage()"><i class="fa fa-save"></i> Thêm mới
+              </button>
+              <button ng-if="!data.statusInsert" type="submit" class="btn btn-primary btn-sm btn-social"
+                ng-click="actions.updateVillage(data.singleVillage.id)"><i class="fa fa-edit"></i> Cập nhật
+              </button>
+              <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-close"></i> Hủy
+              </button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+

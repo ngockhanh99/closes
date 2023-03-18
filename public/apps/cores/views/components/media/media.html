@@ -1,0 +1,90 @@
+<!--add new from question-->
+<section class="content-header margin-bottom-15">
+    <h1>
+        Quản lý media
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#!/"><i class="fa fa-home"></i>Bảng điều khiển</a></li>
+        <li><i class="fa fa-sign-in"></i>&nbsp; Quản lý media</li>
+    </ol>
+</section>
+
+<section class="content">
+    <!--And add new from question-->
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="container">
+                <div class="row">
+                    <input type="hidden" readonly="true" ng-model="data.fileInfo.filename" class="form-control" style="margin-bottom: 5px;width: 350px" />
+                    <input  type="file" id="upload_file"  class="btn btn-default" style="width: 230px; float: left; margin-right: 5px;">
+                    <button
+                        type="button" class="btn btn-primary"
+                        id="btn_upload"
+                        ng-click="actions.uploadFile(data.fileInfo, 'upload_file', 'progress-group', 'btn_upload', 'box-show-progress-upload')" >Tải lên</button>
+                </div>
+                <div id="box-show-progress-upload" style="display: none;" >
+                    <label>Quá trình tải tài liệu</label>
+                    <div id="progress-group" style="color:white">
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix" style="height: 20px;"></div>
+            <div class="col-md-3">
+
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><b>Năm tải</b></h3>
+                    </div>
+                    <div class="box-body no-padding" style="display: block;">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-repeat="year in data.allYear track by $index" ><a  href="#!/media?year={{year}}" > {{year}}</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-9">
+                <table class="table table-bordered">
+                    <colgroup>
+                        <col width="10px" />
+                        <col width="*" />
+                        <col width="10%" />
+                        <col width="10%" />
+                        <col width="10%" />
+                    </colgroup>
+                    <thead class="table-green">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên file</th>
+                            <th>Ngày tải</th>
+                            <th>Người tạo</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="file in data.allFiles.data">
+                        <td>{{data.allFiles.per_page * (data.allFiles.current_page - 1) + $index + 1}}</td>
+                        <td><a href="rest/media/download?filename={{file.filename}}&filepath={{file.filepath}}" target="_blank">{{file.filename}} </a></td>
+                        <td>{{actions.formatDateTime(file.created_at)}}</td>
+                        <td>{{file.user_name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-if="file.permitDelete" >Xóa</button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="dataTables_paginate paging_simple_numbers text-right" style="margin-right: 20px;">
+                    <paging
+                        page="data.allFiles.current_page"
+                        page-size="data.allFiles.per_page"
+                        total="data.allFiles.total"
+                        show-prev-next="true"
+                        paging-action="actions.gotoPage(page)"
+                        show-first-last="true">
+                    </paging>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

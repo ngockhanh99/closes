@@ -1,0 +1,103 @@
+body.login-page {
+    background: url(../images/logo_tthc.png) no-repeat center 25px #064578;
+}
+body.login-page .wrapper
+{
+    background: #d2d6de !important
+}
+body.login-page .content-wrapper {
+    margin: 0px;
+    background: #d3d6df;
+}
+body.login-page .login-box-body {
+    background: transparent;
+}
+
+.login-logo {
+    padding: 20px 10px 0;
+    font-size: 37px;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+body.login-page label.font-normal {
+    color: #fff;
+}
+
+.login-box-msg {
+    color:  #fff;
+    font-size: 26px;
+}
+.login-box {
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 4px;
+}
+body.login-page .content-login{
+    min-height: auto !important; 
+}
+.login-box{
+    margin: 0 auto;
+}
+#footerLogin {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    color: #63ACC7;
+    padding: 5px 0 5px 0;
+    background: #064578;
+    border-top: 1px solid #275f8d;
+}
+.login-box-body {
+    padding-top: 0px;
+}
+.login-box-body .facebook i{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    color: #3c8dbc;
+}
+.login-box-body .google i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    color: #dd4b38;
+}
+.login-box-body .facebook, .login-box-body .google{
+    width: 100%;
+}
+
+.login-or {
+    margin: 15px 30px 10px 30px;
+    text-align: center;
+    height: 20px;
+    color: #fff;
+}
+.login-or .or-left {
+    background: #205784; /* Old browsers */
+    background: -moz-linear-gradient(left, #205784 1%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #205784 1%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #205784 1%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#205784', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+    float: left;
+}
+.login-or .or-left, .login-or .or-right {
+    height: 2px;
+    width: 122px;
+    margin: 10px 0;
+}
+.login-or .or-right {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(left, #ffffff 1%, #205784 99%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ffffff 1%,#205784 99%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ffffff 1%,#205784 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#205784',GradientType=1 ); /* IE6-9 */
+    float: right;
+}

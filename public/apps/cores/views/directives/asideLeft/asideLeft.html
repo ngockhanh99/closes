@@ -1,0 +1,34 @@
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li style="color: #000000;"  class="menu-title" key="t-menu" ng-repeat-start="(index,menu) in asideLeftInfo">
+                    {{menu.label}}
+                    </span>
+                </li>
+                <li ng-class="actions.checkActive(key) ? 'mm-active' : ''"
+                    ng-repeat="(key, value) in menu.permit" aria-expanded="{{actions.checkActive(key) ? 'true' : 'false'}}">
+                    <a href="{{actions.getUrl(key, value.permit)}}"
+                       ng-click="actions.changeMenu(key, value.permit)"
+                       class="waves-effect" ng-class="value.permit ? 'has-arrow' : ''">
+                        <i class="{{value.class_icon}}"></i>
+                        <span >{{value.label}}</span>
+                        <span ng-if="index==0" class="span-menu badge rounded-pill bg-success">{{value.count}}</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li ng-repeat="(keyChild, child) in value.permit"  ng-class="actions.checkActiveChild(key, keyChild) ? 'mm-active' : ''">
+                            <a href="admin#!/{{key}}/{{keyChild}}">
+                                <i class="{{child.class_icon}}"></i>
+                                {{child.label}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-repeat-end="0==1"></li>
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>

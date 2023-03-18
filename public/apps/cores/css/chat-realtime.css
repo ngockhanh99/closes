@@ -1,0 +1,112 @@
+.cover-message {
+    padding:15px;
+}
+.list-message {
+    border-radius: 5px;
+    height: 400px;
+}
+.list-partner {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    height: 400px;
+    padding:0px;
+}
+.list-partner .title-partner label {
+    display: block;
+    text-align: center;
+    font-size:16px;
+    background-color: #396faf;
+    padding:10px;
+    color: #333;
+    color:#fff;
+    border-radius:5px 5px 0px 0px;
+}
+.list-message .single-message {
+    border:1px solid #d19d76;
+    border-radius:5px;
+    height: 90px;
+    cursor: pointer;
+    padding:5px 7px;
+    border-left: 7px solid #d46e1f;
+    box-shadow: 3px 3px 10px rgb(80, 80, 80);
+    margin-bottom: 10px;
+    display: flex;
+    background-color: #f9fafc;
+    position: relative;
+}
+.dot-unread {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background-color: red;
+    border-radius: 50%;
+    animation: blink 0.8s alternate infinite;
+}
+@keyframes blink {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.single-message .left-avatar {
+    width: 90px;
+    border-right: 1px solid lightgrey;
+    margin-right: 10px;
+}
+.single-message .left-avatar img,
+#modal_chat_realtime .avatar_modal img {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 50%;
+    border:3px solid lightgrey;
+}
+.single-message .right-content {
+
+}
+
+#modal_chat_realtime input,
+#modal_chat_realtime textarea
+{
+    border-radius: 5px;
+}
+#modal_chat_realtime .modal-content-message {
+    background-color: #ecf0f5;
+    border: 1px solid lightblue;
+    border-radius:5px;
+    height: 260px;
+    padding: 10px 15px;
+    overflow-y: auto;
+}
+#modal_chat_realtime ul{
+    padding:0px;
+}
+#modal_chat_realtime li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+#modal_chat_realtime li span{
+    padding:3px 10px;
+    background-color: lightblue;
+    border-radius: 5px;
+    color:#000;
+}
+
+.chat-unread {
+    animation: unread 1s ease-out infinite alternate;
+    border:1px solid #396faf!important;
+    border-left: 7px solid #396faf!important;
+}
+
+@keyframes unread {
+    from {
+        box-shadow: 3px 3px 10px rgb(80, 80, 80);
+    }
+    to {
+        box-shadow: 4px 4px 10px #396faf;
+    }
+}

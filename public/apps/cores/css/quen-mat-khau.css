@@ -1,0 +1,53 @@
+body {
+    background-image: url('../images/backgroundLogin.jpg');
+}
+.reset-section {
+    max-width: 600px;
+    margin: 80px auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px 0 #1d2030;
+    padding-bottom: 50px;
+    font-size:16px;
+    background: #fff;
+}
+.input-code {
+    height:70px;
+    width: 60px!important;
+    font-size:32px!important;
+    text-align: center;
+    display: inline-block;
+    margin-left: 5px;
+    color: #019341!important;
+}
+.header-reset {
+    padding:20px;
+    text-align:center;
+    background-color: #019341;
+    border-radius: 5px;
+}
+.header-reset .title {
+    font-size:17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#fff;
+}
+.title-email {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #019341;
+}
+.logo-section img {
+    margin: 0px auto;
+    display: block;
+}
+.button-submit {
+    background-color: #019341;
+    width: 200px;
+    padding: 7px 0px;
+    border-radius: 100px;
+    border: 1px solid grey;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 0px auto;
+}

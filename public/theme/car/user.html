@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Phần mềm quản lý xe</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link href="../plugins/iCheck/minimal/blue.css" rel="stylesheet" type="text/css"/>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- jQuery 2.2.3 -->
+        <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <style>
+            ul li{
+                list-style-type: none;
+            }
+            .dropdown-menu >li{border-bottom: 1px solid #ddd;}
+            .dropdown-menu >li:last-child{border-bottom: 0;}
+            .text_center{text-align: center;}
+            .full_box{
+                background-color: #fff !important;
+                padding: 15px 0px 0px 0px;
+            }
+            #modal_decentralization .box{margin: 0;border-radius: 0;}
+            #modal_decentralization .box-header{
+                background-color: #d2d6de;
+                color: #000;
+            }
+            #modal_decentralization .box-header>h3{font-size: 16px;}
+            #box_file .active{
+                background: #eeeeee;
+            }
+            #box_file .select_folder a{
+                color: #000;
+            }
+            #box_file .select_folder i{
+                color: #FBC02D;
+            }
+            #box_file ul>li:hover{
+                background: #ddd;
+            }
+            #box_file ul li{
+                padding: 5px 0px;
+            }
+            .title{
+                color: #67ce1a;
+                font-size: 16px;
+                text-align: center;
+            }
+            .action{color: #10c51e;}
+            .not-action{color: #c6c6c6;}
+            .scroll{
+                overflow: auto;
+                height: 200px;
+            }
+            .style_title{
+                background: #ddd;
+                color: #000;
+                padding-left: 15px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body class="skin-blue sidebar-mini" style="height: auto;">
+        <div class="wrapper" style="height: auto;">
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>C</b>ar</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Car</b></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 10 notifications</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
+                                            <ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                                                        page and may cause design problems
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
+                                            <div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                                        </div>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Quản trị hệ thống</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        <p>
+                                            Quản trị hệ thống
+                                            <small>admin@gmail.com</small>
+                                        </p>
+                                    </li>
+
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="./user-info.html" class="btn btn-default btn-flat">Thông tin cá nhân</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="./login.html" class="btn btn-default btn-flat">Đăng xuất</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar" style="height: auto;">
+
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">QUẢN TRỊ NỘI DUNG</li>
+                        <li class="active">
+                            <a href="./dashboard-canbo.html">
+                                <i class="fa fa-dashboard"></i> <span>Bảng điều khiển</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="treeview">
+                            <a href="./report.html">
+                                <i class="fa fa-search"></i>
+                                <span>Tra cứu/báo cáo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./drive-underwork.html">
+                                <i class="fa fa-calendar"></i>
+                                <span>Lịch làm việc lái xe</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./car-underwork.html">
+                                <i class="fa fa-calendar"></i>
+                                <span>Lịch bảo trì/bảo dưỡng xe</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./leader.html">
+                                <i class="fa fa-sitemap"></i>
+                                <span>Phân bổ lái xe/xe lãnh đạo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./support.html">
+                                <i class="fa fa-support"></i>
+                                <span>Gợi ý phân bổ xe</span>
+                            </a>
+                        </li>
+                        <li class="header">QUẢN TRỊ HỆ THỐNG</li>
+                        <li><a href="./user.html"><i class="fa fa-university"></i> <span>Đơn vị/Phòng ban/NSD</span></a></li>
+                        <li><a href="./local.html"><i class="fa fa-home"></i> <span>Địa điểm công tác</span></a></li>
+                        <li><a href="./car.html"><i class="fa fa-car"></i> <span>Quuản lý xe</span></a></li>
+                        <li><a href="./config.html"><i class="fa fa-	fa fa-cog"></i> <span>Cấu hình hệ thống</span></a></li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="min-height: 916px;">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>&nbsp;</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i>Danh sách người sử dụng</a></li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <!--info box-->
+                    <div class="col-md-3">
+                        <div class="box box-primary" style="min-height: 150px">
+                            <div class="box-body" id="box_file">
+                                <ul style="padding: 0px;" class="select_folder">
+                                    <li class="active"><i class="fa fa-folder-open-o"></i><a href="#"> Thư mục gốc</a></li>
+                                    <ul>
+                                        <li><i class="fa fa-folder-o"></i><a href="#1"> Đơn vị /Phòng ban</a></li>
+                                        <li><i class="fa fa-folder-o"></i><a href="#2"> Nhóm người sử dụng</a></li>
+                                        <li><i class="fa fa-folder-o"></i><a href="#3"> Người sử dụng</a></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <!--end box add-->
+
+                    <!--box hiển thị danh sách đơn vị/phòng ban/nhóm người sử dụng-->
+                    <div class="col-md-9">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <button class="btn btn-sm btn-social btn-danger" data-toggle="modal" data-target="#modal_remove"><i class="fa fa-trash-o"></i> Xóa</button>
+                                <button class="btn btn-sm btn-social btn-primary" data-toggle="modal" data-target="#modal_unit"><i class="fa fa-plus"></i> Thêm mới đơn vị /phòng ban</button>
+                                <button class="btn btn-sm btn-social btn-primary" data-toggle="modal" data-target="#modal_groupUser"><i class="fa fa-plus"></i> Thêm nhóm NSD mới </button>
+                                <button class="btn btn-sm btn-social btn-primary" data-toggle="modal" data-target="#modal_user"><i class="fa fa-plus"></i> Thêm NSD </button>
+                                <!--search-->
+                                <div class="box-tools" style="top: 10px;">
+                                    <div class="input-group input-group-sm" style="width: 200px;">
+                                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Nhập tên đối tượng cần tìm...">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body my_box" style="min-height: 250px;">
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="50px"></col>
+                                        <col width="50px"></col>
+                                        <col width="50px"></col>
+                                        <col width="80%"></col>
+                                        <col width="20%"></col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text_center">
+                                                <input id="checkbox-toggle" class="check_box" type="checkbox" name="checkAll[]">
+                                            </th>
+                                            <th class="text_center">#</th>
+                                            <th class="text_center">Loại</th>
+                                            <th class="text_center">Tên</th>
+                                            <th class="text_center">Trạng thái</th>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_unit"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center action"><i class="fa fa-folder-open-o"></i></td>
+                                            <td>
+                                                Tỉnh Hải Dương
+                                                <p style="font-size: 12px;"><i>(Đơn vị)</i></p>
+                                            </td>
+                                            <td class="text_center">Hoạt động</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_unit"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center not-action"><i class="fa fa-folder-open-o"></i></td>
+                                            <td>
+                                                Huyên tứ kỳ
+                                                <p style="font-size: 12px;"><i>(Phòng ban)</i></p>
+                                            </td>
+                                            <td class="text_center">Không hoạt động</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_groupUser"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center action"><i class="fa fa-group"></i></td>
+                                            <td>
+                                                Một cửa Hải Dương cấp Huyện
+                                                <p style="font-size: 12px;"><i>(nhóm NSD)</i></p>
+                                            </td>
+                                            <td class="text_center">Hoạt động</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_groupUser"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center not-action"><i class="fa fa-group"></i></td>
+                                            <td>
+                                                Bộ phận thụ lý cấp huyện
+                                                <p style="font-size: 12px;"><i>(nhóm NSD)</i></p>
+                                            </td>
+                                            <td class="text_center">Không hoạt động</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_unit"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center action"><i class="fa fa-user"></i></td>
+                                            <td>
+                                                Nguyễn Văn Hiệp
+                                                <p style="font-size: 12px;"><i>(NSD)</i></p>
+                                            </td>
+                                            <td class="text_center">Hoạt động</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="check_box" type="checkbox" name="check[]"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="" data-toggle="dropdown">
+                                                        <i class="fa fa-list"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_unit"><i class="fa fa-info-circle"></i>Thông tin chi tiết</a></li>
+                                                        <li><a href="" data-toggle="modal" data-target="#modal_remove"><i class="fa  fa-trash-o"></i>Xóa</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="text_center not-action"><i class="fa fa-user"></i></td>
+                                            <td>
+                                                Nguyễn Văn Toàn
+                                                <p style="font-size: 12px;"><i>(NSD)</i></p>
+                                            </td>
+                                            <td class="text_center">Không hoạt động</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                    <!--modal thêm mới đơn vị/phòng ban-->
+                    <div id="modal_unit" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Thêm mới đơn vị /phòng ban</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="box-body">
+                                            <p class="title hidden">Thêm mới thành công</p>
+                                            <div class="form-group fr_group_unit has-error">
+                                                <label>Đơn vị trực thuộc <span style="color: #d81b1b">*</span></label>
+                                                <select class="form-control" id="group_user">
+                                                    <option value="0">-----Chọn đơn vị trực thuộc-----</option>
+                                                    <option value="1">Tỉnh Hải Dương</option>
+                                                    <option value="2">|---Đơn vị 1</option>
+                                                    <option value="3">|---Đơn vị 2</option>
+                                                    <option value="4">|---|---Phòng ban 1</option>
+                                                </select>
+                                                <span class="help-block er_group">Bạn phải chọn nhóm người sử dụng</span>
+                                            </div>
+
+                                            <div class="form-group fr_unit_name has-error">
+                                                <label for="txt_unit_name">Nhập tên đơn vị /phòng ban <span style="color: #d81b1b">*</span></label>
+                                                <input type="text" class="form-control" id="txt_unit_name" placeholder="Tên đơn vị /phòng ban">
+                                                <span class="help-block er_txt_unit_name">Bạn phải nhập tên đơn vị /phòng ban</span>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="radio col-xs-4">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="" value="option1" checked="">
+                                                        Đơn vị
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-xs-4" style="margin-top: 10px;">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="" value="option2">
+                                                        Phòng ban
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label class="text_center">
+                                                    <input type="checkbox">  Hoạt động
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" onclick="btn_add_phongBan()"><i class="fa fa-save"></i> Thêm mới</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <!--modal thêm mới nhóm người sử dụng-->
+                    <div id="modal_groupUser" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Thêm mới nhóm người sử dụng</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-header with-border">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#form_addGroup">Thêm mới /Thông tin chi tiết</a></li>
+                                            <li><a data-toggle="tab" href="#form_addUser">Thêm NSD</a></li>
+                                            <li><a data-toggle="tab" href="#form_decentralization">Phân quyền</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box-body tab-content">
+                                        <!--Form thêm mới nhóm-->
+                                        <form role="form" id="form_addGroup" class="tab-pane fade in active">
+                                            <div class="box-body">
+                                                <p class="title hidden">Thêm mới thành công</p>
+                                                <div class="row">
+                                                    <div class="col-xs-6 form-group fr_group_user has-error">
+                                                        <label for="txt_id_groupUser">Nhập mã nhóm <span style="color: #d81b1b">*</span></label>
+                                                        <input type="text" class="form-control" id="txt_id_groupUser" placeholder="Mã nhóm">
+                                                        <span class="help-block er_group_user">Bạn phải nhập mã nhóm!</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group fr_user_name has-error">
+                                                    <label for="txt_groupName">Nhập tên nhóm NSD <span style="color: #d81b1b">*</span></label>
+                                                    <input type="text" class="form-control" id="txt_groupName" placeholder="Tên nhóm">
+                                                    <span class="help-block er_user_name">Bạn phải nhập tên nhóm!</span>
+                                                </div>
+                                                <div class="form-group fr_group_unit has-error">
+                                                    <label>Đơn vị/phòng ban trực thuộc <span style="color: #d81b1b">*</span></label>
+                                                    <select class="form-control" id="group_user">
+                                                        <option value="0">---Chọn đơn vị trực thuộc---</option>
+                                                        <option value="1">Tỉnh Hải Dương</option>
+                                                        <option value="2">---Đơn vị 1</option>
+                                                        <option value="3">---Đơn vị 2</option>
+                                                        <option value="4">------Phòng ban 1</option>
+                                                    </select>
+                                                    <span class="help-block er_group">Bạn phải chọn nhóm người sử dụng</span>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label class="text_center">
+                                                        <input type="checkbox">  Hoạt động
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!--Form thêm mới NSD vào nhóm-->
+                                        <form role="form" id="form_addUser" class="tab-pane fade">
+                                            <div class="box-body scroll" style="height: 300px;">
+                                                <div class="form-group" style="padding: 0px 20px">
+                                                    <ul style="padding: 0px;" class="select_folder">
+                                                        <li class="style_title"><i class="fa fa-folder-o"></i> Đơn vị /Phòng ban</li>
+                                                        <ul>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Hiệp
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Bắc
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Cọp
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                        <li class="style_title"><i class="fa fa-folder-o"></i> Nhóm người sử dụng</li>
+                                                        <ul>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Minh
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Bình
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nguyễn Văn Thành
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!--Form phân quyền-->
+                                        <form role="form" id="form_decentralization" class="tab-pane fade">
+                                            <div class="modal-body full_box">
+                                                <div class="box">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title"><b>Nhóm quyền quản trị nội dung</b></h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="form-group" style="padding: 0px 20px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Cán bộ chuyên môn
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Lãnh đạo
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Cán bộ điều hành xe
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Lái xe
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+                                                <div class="box">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title"><b>Nhóm quyền quản trị hệ thống</b></h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="form-group" style="padding: 0px 20px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị đơn vị
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị người sử dụng
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị phân quyền
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quản lý xe
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quản lý cấu hình hệ thống
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Thêm mới</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <!--Modal chọn NSD thêm vào nhóm-->
+                    <div id="modal_addUser_inGroup" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Chọn NSD vào nhóm</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="box-body scroll">
+                                            <div class="form-group" style="padding: 0px 20px">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nguyễn Văn Hiệp
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Phạm Ngọc Minh
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Trần Bắc
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Phạm Hoài Phước
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Đoàn Công Minh
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nguyễn Văn Hiệp
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Phạm Ngọc Minh
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Trần Bắc
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Phạm Hoài Phước
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Đoàn Công Minh
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Chọn</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <!--Modal thêm mới người sử dụng-->
+                    <div id="modal_user" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Thêm mới người sử dụng</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-header with-border">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#form_dangkyNSD">Thông tin cơ bản</a></li>
+                                            <li><a data-toggle="tab" href="#form_addNhom">Thêm nhóm</a></li>
+                                            <li><a data-toggle="tab" href="#form_phanQuyen">Phân quyền</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box-body tab-content">
+
+                                        <!--Form thông tin hành chính-->
+                                        <form  role="form" id="form_dangkyNSD" class="tab-pane fade in active">
+                                            <!--Thông tin tài khoản-->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"><b>Tài khoản</b></h4>
+                                            </div>
+                                            <div class="box-body form-horizontal">
+                                                <div class="form-group has-error">
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tài khoản <span style="color: #d81b1b">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Nhập tên đăng nhập...">
+                                                        <span class="help-block">Tên đăng nhập không hợp lệ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group has-error">
+                                                    <label for="inputPassword3" class="col-sm-4 control-label">Mật khẩu mới <span style="color: #d81b1b">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Nhập mật khẩu..">
+                                                        <span class="help-block">Mật khẩu không hợp lệ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group has-error">
+                                                    <label for="inputPassword3" class="col-sm-4 control-label">Nhập lại mật khẩu <span style="color: #d81b1b">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Xác nhận lại mật khẩu..">
+                                                        <span class="help-block">Xác nhận mật khẩu không hợp lệ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Thông tin hành chính-->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"><b>Thông tin hành chính</b></h4>
+                                            </div>
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    <div class="col-xs-6 form-group txt_name has-error">
+                                                        <label for="name_User">Họ tên <span style="color: #d81b1b">*</span></label>
+                                                        <input type="text" class="form-control" id="name_User" placeholder="Nhập họ tên đầy đủ">
+                                                        <span class="help-block er_name">Trường này không được để trống!</span>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group txt_phone has-error">
+                                                        <label for="phone">Số điện thoại <span style="color: #d81b1b">*</span></label>
+                                                        <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại">
+                                                        <span class="help-block er_phone">Trường này không được để trống!</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 form-group txt_email has-error">
+                                                        <label for="email">Email <span style="color: #d81b1b">*</span></label>
+                                                        <input type="email" class="form-control" id="email" placeholder="abc@gmail.com">
+                                                        <span class="help-block er_email">Trường này không được để trống!</span>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group txt_address has-error">
+                                                        <label for="address">Địa chỉ <span style="color: #d81b1b">*</span></label>
+                                                        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ">
+                                                        <span class="help-block er_address">Trường này không được để trống!</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group sel_unit has-error">
+                                                    <label>Chức danh <span style="color: #d81b1b">*</span></label>
+                                                    <select class="form-control" id="unit">
+                                                        <option value="0">---Chọn chức danh---</option>
+                                                        <option value="1">Giám đốc</option>
+                                                        <option value="2">Phó giám đốc</option>
+                                                        <option value="3">Trưởng Phòng</option>
+                                                        <option value="4">Cán bộ chuyên viên</option>
+                                                        <option value="5">Lái xe</option>
+                                                        <option value="6">.......</option>
+                                                    </select>
+                                                    <span class="help-block er_unit">Bạn phải chọn chức danh!</span>
+                                                </div>
+                                                <div class="form-group sel_unit has-error">
+                                                    <label>Đơn vị /phòng ban trực thuộc <span style="color: #d81b1b">*</span></label>
+                                                    <select class="form-control" id="unit">
+                                                        <option value="0">-----Chọn đơn vị /phòng ban-----</option>
+                                                        <option value="1">Đơn vị 1</option>
+                                                        <option value="2">|---Phong ban 1</option>
+                                                        <option value="5">|---Phòng ban 2</option>
+                                                        <option value="6">Đơn vị 2</option>
+                                                        <option value="7">|---Phong ban 1</option>
+                                                        <option value="8">|---Phòng ban 2</option>
+                                                        <option value="9">|---Phòng ban 2</option>
+                                                        <option value="10">|---Phòng ban 3</option>
+                                                    </select>
+                                                    <span class="help-block er_unit">Bạn phải chọn nhóm /đơn vị /phòng ban trực thuộc!</span>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label class="text_center">
+                                                        <input type="checkbox">  Hoạt động
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!--Form phân quyên cho NSD-->
+                                        <form  role="form" id="form_phanQuyen" class="tab-pane fade">
+                                            <div class="modal-body full_box">
+                                                <div class="box">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title"><b>Nhóm quyền quản trị nội dung</b></h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="form-group" style="padding: 0px 20px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Cán bộ chuyên môn
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Lãnh đạo
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Cán bộ điều hành xe
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Lái xe
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+                                                <div class="box">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title"><b>Nhóm quyền quản trị hệ thống</b></h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="form-group" style="padding: 0px 20px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị đơn vị
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị người sử dụng
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quyền quản trị phân quyền
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quản lý xe
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Quản lý cấu hình hệ thống
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!--form add NSD vào nhóm-->
+                                        <form  role="form" id="form_addNhom" class="tab-pane fade">
+                                            <div class="box-body scroll" style="height: 300px;">
+                                                <div class="form-group" style="padding: 0px 20px">
+                                                    <ul style="padding: 0px;" class="select_folder">
+                                                        <li class="style_title"><i class="fa fa-folder-o"></i> Đơn vị /Phòng ban</li>
+                                                        <ul>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 1
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 2
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 3
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                        <li class="style_title"><i class="fa fa-folder-o"></i> Nhóm người sử dụng</li>
+                                                        <ul>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 1
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 2
+                                                                </label>
+                                                            </li>
+                                                            <li class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> Nhóm 3
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Thêm mới</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <!--Modal sel- thêm nhóm cho NSD-->
+                    <div id="modal_addGroup_toUser" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Chọn Nhóm mà NSD tham gia</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="box-body scroll">
+                                            <div class="form-group" style="padding: 0px 20px">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 1
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 2
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 3
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 4
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 5
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 6
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 7
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 8
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 9
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Nhóm NSD 10
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Chọn</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--modal thông báo xóa-->
+                    <div id="modal_remove" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #00a7d0;color: #fff;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span></button>
+                                    <h4 class="modal-title">Thông báo </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Bạn có chắc chắn muốn xóa không?</h4>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Đồng ý</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Hủy</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                </section>
+                <!-- /.content -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.0.0
+                </div>
+                <strong>Tamviettech © 2018-2019 <a href="http://tamviettech.vn/">tavmiettech.vn</a>.</strong> Phần mềm quản lý xe
+            </footer>
+
+            <!-- Add the sidebar's background. This div must be placed
+               immediately after the control sidebar -->
+            <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#box_file li').each(function (index, value) {
+                    $(this).click(function () {
+                        $('#box_file li').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                });
+            });
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue',
+                    increaseArea: '20%' // optional
+                });
+            });
+        </script>
+
+        <!-- ./wrapper -->
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="../plugins/knob/jquery.knob.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/app.min.js"></script>
+    </body>
+</html>

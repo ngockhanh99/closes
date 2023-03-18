@@ -1,0 +1,86 @@
+
+<!--add new from question-->
+<section class="content-header ">
+    <h1>
+        Danh sách cấu hình báo cáo
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="/"><i class="fa fa-home"></i>Bảng điều khiển</a></li>
+        <li><a ui-sref="sipas-config-report"><i class="fa fa-cog"></i>Danh sách cấu hình báo cáo </a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row" >
+        <div class="col-xs-12" >
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Danh sách cấu hình</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row" >
+                        <div class="col-xs-12">
+                            <table class="table table-bordered">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="20%">
+                                    <col width="200px" >
+                                    <col width="150px" >
+                                    <col width="200px" >
+                                    <col width="200px" >
+                                </colgroup>
+                                <tr class="table-green">
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Năm đánh giá</th>
+                                    <th class="text-center">Thời gian bắt đầu</th>
+                                    <th class="text-center">Thời gian kết thúc</th>
+                                    <th class="text-center">Tên báo cáo</th>
+                                    <th  class="text-center">Thao tác</th>
+                                </tr>
+
+<!--                 start ng-repeat               -->
+                                <tr ng-repeat-start="config in data.listConfig">
+                                    <td rowspan="{{data.allTypeSipasReport.length}}" class="text-center">{{$index + 1}}</td>
+                                    <td rowspan="{{data.allTypeSipasReport.length}}" class="text-center">{{config.year}}</td>
+                                    <td rowspan="{{data.allTypeSipasReport.length}}" class="text-center">{{actions.formatDateTimeDMY(config.begin_date)}}</td>
+                                    <td rowspan="{{data.allTypeSipasReport.length}}" class="text-center">{{actions.formatDateTimeDMY(config.end_date)}}</td>
+                                    <td >{{data.allTypeSipasReport[0].label}}</td>
+                                    <td class="text-center">
+                                        <a href="#!/sipas-config-report-detail/{{config.id}}/{{data.allTypeSipasReport[0].code}}" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i> Cấu hình
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="item in data.allTypeSipasReport" ng-if="$index != 0">
+                                    <td >{{item.label}}</td>
+                                    <td class="text-center">
+                                        <a href="#!/sipas-config-report-detail/{{config.id}}/{{item.code}}" class="btn btn-primary btn-sm"><i class="fa fa-cog"></i> Cấu hình
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr ng-repeat-end=""></tr>
+
+                            </table>
+                            <div class="dataTables_paginate paging_simple_numbers text-right" style="margin-right: 20px;">
+                                <paging
+                                    page="data.listResult.questionForm.data.current_page"
+                                    page-size="data.listResult.questionForm.data.per_page"
+                                    total="data.listResult.questionForm.data.total"
+                                    show-prev-next="true"
+                                    paging-action="actions.gotoPage(page)"
+                                    show-first-last="true">
+                                </paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" >
+        </div>
+    </div>
+</section>
