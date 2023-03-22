@@ -2,12 +2,16 @@
 <html lang="vi" ng-app="myApp">
 
 <head>
-    <title><?php echo config("app.UNIT_NAME"); ?></title>
+    <title><?php
+
+use Illuminate\Support\Facades\Auth;
+
+ echo config("app.UNIT_NAME"); ?></title>
     <meta name="csrf-token" content="<?php echo csrf_token() ?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" href="<?php echo asset('apps/frontend/images') ?>/hnd_logo.png" type="image/x-icon" />
+    <link rel="icon" href="<?php echo asset('apps/frontend/images') ?>/logo.png" type="image/x-icon" />
     <link href="<?php echo url('theme/skote') ?>/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
         type="text/css" />
     <!-- Bootstrap Rating css -->
@@ -38,6 +42,8 @@
     </div>
     <script>
     const SITE_ROOT = '{{asset('/')}}'
+    const USER_ID = '{{Auth::id()??""}}'
+    const USER_NAME = '{{Auth::user()->user_name??""}}'
     </script>
 
     <script src="<?php echo url('theme/skote') ?>/assets/libs/jquery/jquery.min.js"></script>

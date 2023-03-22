@@ -42,14 +42,17 @@ class LoginCtrl extends RestController
     {
         $user_login_name = $request->input('user_login_name');
         $password        = $request->input('password');
-        if (!Auth::attempt(['user_login_name' => $user_login_name, 'password' => $password, 'user_status' => 1, 'verified' => 1], $request->has('remember'))
-            && !Auth::attempt(['user_email' => $user_login_name, 'password' => $password, 'user_status' => 1, 'verified' => 1], $request->has('remember'))
-            && !Auth::attempt(['user_phone' => $user_login_name, 'password' => $password, 'user_status' => 1, 'verified' => 1], $request->has('remember')))
+        if (!Auth::attempt(['user_login_name' => $user_login_name, 'password' => $password], $request->has('remember')))
         {
             $errors = new MessageBag(['errorlogin' => 'Tài khoản hoặc mật khẩu không đúng']);
             return redirect()->back()->withInput()->withErrors($errors);
         }
-        return redirect('/admin/');
+        if(Auth::user()->user_is_admin){
+            return redirect('/admin/');
+        }else{
+            return redirect('/');
+        }
+       
     }
 
     function logout()

@@ -46,8 +46,6 @@ class AppServiceProvider extends ServiceProvider
             return false;
         });
         Schema::defaultStringLength(191);
-        if (config('vfa.DOMAIN_HTTPS')) {
-            \URL::forceScheme('https');
-        }
+            // \URL::forceScheme('https');
     }
 }

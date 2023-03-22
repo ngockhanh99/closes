@@ -14,17 +14,23 @@
         <div class="form login" id="form">
             <div class="content">
                 <h1>Đăng nhập</h1>
-                <div class="group">
-                    <input type="text" id="username-login" name='email' autocomplete="off" class="inputText"
-                        placeholder="&nbsp;" required>
-                    <label for="username-login">Tên đăng nhập</label>
-                </div>
-                <div class="group">
-                    <input type="password" id="pass-login " name="password" autocomplete="off" class="inputText"
-                        placeholder="&nbsp;" required>
-                    <label for="pass-login">Mật khẩu</label>
-                </div>
-                <button>Đăng nhập</button>
+                <form action="{{url('admin/auth/login')}}" novalidate="novalidate" method="post">
+                        {!! csrf_field() !!}
+                        <span style="color:red" class="help-block">{{$errors->first('errorlogin')}}</span>
+                    <div class="group">
+                        <input type="text" id="email-login" name='user_login_name' autocomplete="off" class="inputText"
+                            placeholder="&nbsp;" required>
+                        <label for="email-login">Tên đăng nhập</label>
+                    </div>
+                    <i class="text-danger" style="display: block;" id="error-email-login"></i>
+                    <div class="group">
+                        <input type="password" id="password-login " name="password" autocomplete="off" class="inputText"
+                            placeholder="&nbsp;" required>
+                        <label for="password-login">Mật khẩu</label>
+                    </div>
+                    <i class="text-danger" style="display: block;" id="error-password-login"></i>
+                    <button type="submit">Đăng nhập</button> 
+                </form>
             </div>
 
             <div class="content">

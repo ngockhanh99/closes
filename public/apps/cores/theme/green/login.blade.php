@@ -24,7 +24,7 @@
                 <form method="POST" action="{{url('admin/auth/login')}}" novalidate="novalidate">
                     {!! csrf_field() !!}
                     <div class="logo-section">
-                        <img src="{{asset('apps/cores/images/mca-logo.png')}}" width="70%;">
+                    <img src="{{asset('apps/frontend/images/logo.png')}}" alt="" width="70%" >
                     </div>
 
                     <div id="step_1">

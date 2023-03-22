@@ -30,6 +30,15 @@ $(document).ready(function () {
 
 });
 function addToCart(id) {
+    if(USER_ID==''){
+        Swal.fire({
+            title: 'Vui lòng đăng nhập để tiếp tục',
+            cshowConfirmButton: false, 
+            icon: 'warning',
+            timer: 1500
+        });
+        return
+    }
     let size = document.querySelector('input[name=size]:checked').value;
     let color = document.querySelector('.color-choose.active').getAttribute('data-color');
     let quantity = document.querySelector('input[name=quantity]').value;
@@ -59,6 +68,13 @@ function activeColor(){
             item.classList.add('active')
         }
     })
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 39) {
+            $(".main-header").addClass('fixed-top');
+        } else {
+            $(".main-header").removeClass('fixed-top');
+        }
+    });
 }
 function cartPay(){
     $('#cart-pay').modal('show')
