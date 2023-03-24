@@ -36,9 +36,9 @@ class OrderDraftCtrl extends RestController
         }else{
             OrderDraft::create([
                 'user_id'=>Auth::id(),
-                'dochoi_san_pham_id'=>$request->san_pham_id??"",
-                'size_id'=>$request->size_id??"",
-                'color_id'=>$request->color_id??"",
+                'dochoi_san_pham_id'=>$request->san_pham_id??null,
+                'size_id'=>$request->size_id??null,
+                'color_id'=>$request->color_id??null,
                 "quantity"=>$quantity,
             ]);
         }

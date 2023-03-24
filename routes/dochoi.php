@@ -29,11 +29,13 @@ Route::prefix('dochoi')->group(function()
         Route::put('/update/{id}','Dochoi\SanphamCtrl@update')->middleware('role');
         Route::delete('/delete/{id}','Dochoi\SanphamCtrl@delete')->middleware('role');
     });
+    Route::prefix('donhang')->group(function(){
+        Route::get('/','Dochoi\OrderCtrl@getAll');
+    });
     Route::get('/product/{id}', 'ProductController@index')->name('product');
     Route::get('/list-product/{id}', 'ProductController@listProduct')->name('listProduct');
     Route::post('/add-to-cart', 'Dochoi\OrderDraftCtrl@insert')->name('insert-cart');
     Route::post('/order', 'Dochoi\OrderCtrl@insert')->name('insert-order');
-  
 });
 
 Route::prefix('home')->group(function()

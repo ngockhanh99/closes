@@ -74,4 +74,24 @@ app.config(function ($stateProvider) {
                 ],
             },
         })
+        .state("dochoi-don-hang", {
+            url: "/dochoi-don-hang",
+            controller: "donhangCtrl",
+            templateUrl:
+                SITE_ROOT + "apps/cores/views/components/dochoi/donhang/donhang.html",
+            resolve: {
+                loadMyCtrl: [
+                    "$ocLazyLoad",
+                    "Auth",
+                    function ($ocLazyLoad, Auth) {
+                        return Auth.checkLogin.then(() => {
+                            return $ocLazyLoad.load([
+                                SITE_ROOT +
+                                "apps/cores/views/components/dochoi/donhang/donhangCtrl.js?v=" + APP_VERSION,
+                            ]);
+                        });
+                    },
+                ],
+            },
+        })
 });

@@ -1803,8 +1803,8 @@ table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td
 }
 
 .table-green {
-    background-color: #019341;
-    color: white;
+    background-color: lightgray;
+    color: #000;
 }
 
 .right-50 {

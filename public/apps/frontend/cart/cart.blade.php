@@ -73,7 +73,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-sm-6">
-                                <a href="ecommerce-products.html" class="btn btn-secondary">
+                                <a href="{{asset('dochoi/list-product/'.$listloaisanpham[0]->id)}}" class="btn btn-secondary">
                                     <i class="mdi mdi-arrow-left me-1"></i> Tiếp tục mua sắm </a>
                             </div> <!-- end col -->
                             <div class="col-sm-6">

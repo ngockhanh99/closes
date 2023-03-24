@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-title">
-                    <div class="box-title-text"><span>Danh sách tin bài</span></div>
+                    <div class="box-title-text"><span>Danh sách san phẩm</span></div>
                     <div class="box-title-layout">
                         <div class="flex">
                             <input type="text" class="form-control form-filter" ng-model="search.key_word"
@@ -60,16 +60,16 @@
                             <td class="text-center align-top">
                                 {{$index + (search.page - 1) * search.per_page + 1}}
                             </td>
-                            <td class="align-top">{{item.name}}</td>
-                            <td class="align-top">{{item.code}}</td>
+                            <td class="align-top text-center">{{item.name}}</td>
+                            <td class="align-top text-center">{{item.code}}</td>
                             <td class="align-middle text-center">
                                 <img ng-src="{{actions.getPathImg(item.medias[0].filepath)}}"
                                     style="border:1px solid lightgrey;object-fit: cover;" height="100px" width="150px">
                             </td>
-                            <td class="align-top">{{item.loaisanpham.name}}</td>
-                            <td class="align-top">{{item.loaisanpham.danhmuc.name}}</td>
-                            <td class="align-top">{{item.price}}</td>
-                            <td class="align-top">{{item.quantity}}</td>
+                            <td class="align-top text-center">{{item.loaisanpham.name}}</td>
+                            <td class="align-top text-center">{{item.loaisanpham.danhmuc.name}}</td>
+                            <td class="align-top text-right">{{item.price | formatNumber}}</td>
+                            <td class="align-top text-center">{{item.quantity}}</td>
                             <td class="text-center align-top">
                                 <button type="button" class="btn btn-primary tooltip-css"
                                     ng-click="actions.handleShowList(false,false,$index)">

@@ -31,7 +31,7 @@
             </div>
             <div class="search">
                 <form action="">
-                    <input type="text" class="form-control" placeholder="Nhập từ khóa..">
+                    <input type="text" class="form-control" id="search-home" placeholder="Nhập từ khóa..">
                 </form>
             </div>
             <div class="shopping-card text-center">

@@ -82,6 +82,7 @@
                     <b>{{$sanpham->price}}VNĐ</b>
                 </h5>
                 <p class="text-muted mb-4">{!! html_entity_decode($sanpham->description??'') !!}</p>
+                @if(count($size)>0)
                 <div class="product-size">
                     <h5 class="font-size-15">Size :</h5>
                     <div class="size-input"> @foreach($size as $key => $s) <input type="radio" class="input-size" name="size" value="{{$s->id}}"
@@ -90,11 +91,12 @@
                     @endforeach</div>
                    
                 </div>
+                @endif
                 <div class="product-size">
                 <h5 class="font-size-15">Số lượng :</h5>
                 <input class="form-control" id='product-quantity' type="number" min="1" step="1" name="quantity" value="1">
                 </div>
-                
+                @if(count($color)>0)
                 <div class="product-color">
                     <h5 class="font-size-15">Màu :</h5>
                     @foreach($color as $key => $c)
@@ -106,6 +108,7 @@
                     </a>
                     @endforeach
                 </div>
+                @endif
             </div>
         </div>
     </div>

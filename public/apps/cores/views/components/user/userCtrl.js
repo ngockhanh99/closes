@@ -19,7 +19,6 @@ angular.module('myApp').controller("userCtrl", function ($scope, $http, $rootSco
     };
     $scope.actions = {
         initial(){
-            uploadUserAvatar()
             $scope.actions.getAll()
             $scope.actions.getProvince()
             $scope.actions.getType()
@@ -44,9 +43,7 @@ angular.module('myApp').controller("userCtrl", function ($scope, $http, $rootSco
             $scope.data.singleUser = {...$scope.data.listUser[index]}
             if(status) {
                 $scope.data.singleUser.user_status = 1
-                preview_avatar.innerHTML = ''
             }
-            if(!status) preview_avatar.innerHTML = `<image width="190px" src="${$scope.data.singleUser.user_avatar}" alt="Ảnh đại diện" >`
             $scope.actions.changeDistrict()
             $scope.actions.changeVillage()
             getUserMeta($scope.data.singleUser.user_meta)

@@ -39,6 +39,18 @@ use Illuminate\Support\Facades\Auth;
         @include('frontend.layout.header')
         @yield('content')
         @include('frontend.layout.footer')
+        <div class="fixed_custom_contact">
+	            <ul>
+					<li class="call_phone">
+				<div class="phone_animation">
+					<div class="phone_animation_circle"></div>
+					<div class="phone_animation_circle_fill_img">
+                        <a href="tel:+84857598456" style="position: absolute;width: 100%;height: 100%;z-index: 100;"></a>
+                    </div>
+				</div>
+			</li>
+			</ul>
+</div>
     </div>
     <script>
     const SITE_ROOT = '{{asset('/')}}'

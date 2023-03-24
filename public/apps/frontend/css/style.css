@@ -763,3 +763,266 @@ body {
 .fixed-top{
   position: fixed;
 }
+.fixed_custom_contact{
+  position: fixed;
+  bottom: 28px;
+  left: 15px;
+  z-index: 99;
+}
+.phone_animation{
+  background-color: transparent;
+ height: 60px;
+ width: 60px;
+ margin: 0;
+ cursor: pointer;
+ z-index: 200000 !important;
+ -webkit-backface-visibility: hidden;
+ -webkit-transform: translateZ(0);
+ -webkit-transition: visibility .5s;
+ -moz-transition: visibility .5s;
+ -o-transition: visibility .5s;
+ transition: visibility .5s;
+ visibility: visible;
+}
+.phone_animation_circle{
+ width: 100px;
+ height:100px;
+ top: -25px;
+ left: -25px;
+ position: absolute;
+ background-color: transparent;
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ border-radius: 100%;
+ border: 2px solid rgba(30,30,30,0.4);
+ border: 2px solid #bfebfc 9;
+ opacity: 0.5;
+ -webkit-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+ -moz-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+ -ms-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+ -o-animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+ animation: coccoc-alo-circle-anim 1.2s infinite ease-in-out;
+ -webkit-transition: all .5s;
+ -moz-transition: all .5s;
+ -o-transition: all .5s;
+ transition: all .5s;
+ -webkit-transform-origin: 50% 50%;
+ -moz-transform-origin: 50% 50%;
+ -ms-transform-origin: 50% 50%;
+ -o-transform-origin: 50% 50%;
+ transform-origin: 50% 50%;
+ border-color: #ddba76;
+}
+.phone_animation_circle_fill{
+ width: 60px;
+ height: 60px;
+ top: -5px;
+ left: 20px;
+ position: absolute;
+ background-color: #da251c;
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ border-radius: 100%;
+ border: 2px solid transparent;
+ opacity: .2;
+ -webkit-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+ -moz-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+ -ms-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+ -o-animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+ animation: coccoc-alo-circle-fill-anim 2.3s infinite ease-in-out;
+ -webkit-transition: all .5s;
+ -moz-transition: all .5s;
+ -o-transition: all .5s;
+ transition: all .5s;
+ -webkit-transform-origin: 50% 50%;
+ -moz-transform-origin: 50% 50%;
+ -ms-transform-origin: 50% 50%;
+ -o-transform-origin: 50% 50%;
+ transform-origin: 50% 50%;
+}
+.phone_animation_circle_fill_img{
+   width: 50px;
+ height: 50px;
+ top: 0px;
+ left: 0px;
+ position: absolute;
+ background: #ddba76 url('../images/iconphone.png') no-repeat center center;
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ border-radius: 100%;
+ border: 2px solid transparent;
+ -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+ -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+ -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+ -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+ animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+ -webkit-transform-origin: 50% 50%;
+ -moz-transform-origin: 50% 50%;
+ -ms-transform-origin: 50% 50%;
+ -o-transform-origin: 50% 50%;
+ transform-origin: 50% 50%;
+ background-color: #ddba76;
+ background-size: 70%;
+}
+@-moz-keyframes coccoc-alo-circle-anim {
+ 0% {
+     -moz-transform: rotate(0) scale(.5) skew(1deg);
+     opacity: .1;
+     -moz-opacity: .1;
+     -webkit-opacity: .1;
+     -o-opacity: .1
+ }
+ 30% {
+     -moz-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .5;
+     -moz-opacity: .5;
+     -webkit-opacity: .5;
+     -o-opacity: .5
+ }
+ 100% {
+     -moz-transform: rotate(0) scale(1) skew(1deg);
+     opacity: .6;
+     -moz-opacity: .6;
+     -webkit-opacity: .6;
+     -o-opacity: .1
+ }
+}
+@-webkit-keyframes coccoc-alo-circle-anim {
+ 0% {
+     -webkit-transform: rotate(0) scale(.5) skew(1deg);
+     -webkit-opacity: .1
+ }
+ 30% {
+     -webkit-transform: rotate(0) scale(.7) skew(1deg);
+     -webkit-opacity: .5
+ }
+ 100% {
+     -webkit-transform: rotate(0) scale(1) skew(1deg);
+     -webkit-opacity: .1
+ }
+}
+@-o-keyframes coccoc-alo-circle-anim {
+ 0% {
+     -o-transform: rotate(0) kscale(.5) skew(1deg);
+     -o-opacity: .1
+ }
+ 30% {
+     -o-transform: rotate(0) scale(.7) skew(1deg);
+     -o-opacity: .5
+ }
+ 100% {
+     -o-transform: rotate(0) scale(1) skew(1deg);
+     -o-opacity: .1
+ }
+}
+@-moz-keyframes coccoc-alo-circle-fill-anim {
+ 0% {
+     -moz-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+ 50% {
+     -moz-transform: rotate(0) -moz-scale(1) skew(1deg);
+     opacity: .2
+ }
+ 100% {
+     -moz-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+}
+@-webkit-keyframes coccoc-alo-circle-fill-anim {
+ 0% {
+     -webkit-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+ 50% {
+     -webkit-transform: rotate(0) scale(1) skew(1deg);
+     opacity: .2
+ }
+ 100% {
+     -webkit-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+}
+@-o-keyframes coccoc-alo-circle-fill-anim {
+ 0% {
+     -o-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+ 50% {
+     -o-transform: rotate(0) scale(1) skew(1deg);
+     opacity: .2
+ }
+ 100% {
+     -o-transform: rotate(0) scale(.7) skew(1deg);
+     opacity: .2
+ }
+}
+@-moz-keyframes coccoc-alo-circle-img-anim {
+ 0% {
+     transform: rotate(0) scale(1) skew(1deg)
+ }
+ 10% {
+     -moz-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 20% {
+     -moz-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 30% {
+     -moz-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 40% {
+     -moz-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 50% {
+     -moz-transform: rotate(0) scale(1) skew(1deg)
+ }
+ 100% {
+     -moz-transform: rotate(0) scale(1) skew(1deg)
+ }
+}
+@-webkit-keyframes coccoc-alo-circle-img-anim {
+ 0% {
+     -webkit-transform: rotate(0) scale(1) skew(1deg)
+ }
+ 10% {
+     -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 20% {
+     -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 30% {
+     -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 40% {
+     -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 50% {
+     -webkit-transform: rotate(0) scale(1) skew(1deg)
+ }
+ 100% {
+     -webkit-transform: rotate(0) scale(1) skew(1deg)
+ }
+}
+@-o-keyframes coccoc-alo-circle-img-anim {
+ 0% {
+     -o-transform: rotate(0) scale(1) skew(1deg)
+ }
+ 10% {
+     -o-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 20% {
+     -o-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 30% {
+     -o-transform: rotate(-25deg) scale(1) skew(1deg)
+ }
+ 40% {
+     -o-transform: rotate(25deg) scale(1) skew(1deg)
+ }
+ 50% {
+     -o-transform: rotate(0) scale(1) skew(1deg)
+ }
+ 100% {
+     -o-transform: rotate(0) scale(1) skew(1deg)
+ }
+}

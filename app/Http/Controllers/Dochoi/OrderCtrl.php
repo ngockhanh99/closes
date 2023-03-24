@@ -14,12 +14,8 @@ class OrderCtrl extends RestController
 {
     public function getAll(Request $request){
         $params = $request->all();
-        $sanpham = Sanpham::getData($params);
-        foreach($sanpham as $value){
-            $value->description = json_decode($value->description??'');
-            $value->description_detail = json_decode($value->description_detail??'');
-        }
-        return response()->json($sanpham);
+        $order = Order::getAll($params);
+        return response()->json($order);
     }
 
     public function insert(Request $request){

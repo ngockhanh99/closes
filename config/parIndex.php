@@ -22,6 +22,10 @@ return [
                 'class_icon' => 'bx bxl-product-hunt',
                 'label' => 'Danh sách màu sản phẩm'
             ],
+            'dochoi-don-hang' => [
+                'class_icon' => 'bx bxl-product-hunt',
+                'label' => 'Danh sách đơn hàng'
+            ],
         ]
     ],  [
         'label' => 'Quản trị hệ thống',
