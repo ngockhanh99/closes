@@ -14,7 +14,7 @@ class OrderCtrl extends RestController
 {
     public function getAll(Request $request){
         $params = $request->all();
-        $order = Order::getAll($params);
+        $order = Order::makeinstance()->getAll($params);
         return response()->json($order);
     }
 
@@ -56,13 +56,6 @@ class OrderCtrl extends RestController
                 'dochoi_san_pham_id'=>$id
             ]);
         }
-        return response()->json($sanpham);
-    }
-
-    public function delete($id){
-        $sanpham = Sanpham::find($id);
-        $sanpham->delete();
-        $sanpham->medias()->sync(null);
         return response()->json($sanpham);
     }
 }

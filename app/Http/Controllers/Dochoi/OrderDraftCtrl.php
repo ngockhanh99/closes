@@ -70,11 +70,9 @@ class OrderDraftCtrl extends RestController
         }
         return response()->json($sanpham);
     }
-
     public function delete($id){
-        $sanpham = Sanpham::find($id);
-        $sanpham->delete();
-        $sanpham->medias()->sync(null);
-        return response()->json($sanpham);
+        $order = OrderDraft::find($id);
+        $order->delete();
+        return response()->json();
     }
 }

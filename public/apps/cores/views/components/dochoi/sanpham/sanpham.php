@@ -40,7 +40,7 @@
                         <col width="12%" />
                         <col width="8%" />
                         <col width="8%" />
-                        <col width="8%" />
+                        <col width="10%" />
                     </colgroup>
                     <thead class="table-green">
                         <tr>
@@ -60,11 +60,11 @@
                             <td class="text-center align-top">
                                 {{$index + (search.page - 1) * search.per_page + 1}}
                             </td>
-                            <td class="align-top text-center">{{item.name}}</td>
+                            <td class="align-top">{{item.name}}</td>
                             <td class="align-top text-center">{{item.code}}</td>
                             <td class="align-middle text-center">
                                 <img ng-src="{{actions.getPathImg(item.medias[0].filepath)}}"
-                                    style="border:1px solid lightgrey;object-fit: cover;" height="100px" width="150px">
+                                    style="border:1px solid lightgrey;object-fit: cover;" height="80px" width="120px">
                             </td>
                             <td class="align-top text-center">{{item.loaisanpham.name}}</td>
                             <td class="align-top text-center">{{item.loaisanpham.danhmuc.name}}</td>

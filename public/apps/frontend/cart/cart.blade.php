@@ -35,7 +35,6 @@
                                         <th>Ảnh</th>
                                         <th>Sản phẩm</th>
                                         <th>Giá</th>
-                                        <th>Số lượng</th>
                                         <th colspan="2">Đơn giá</th>
                                     </tr>
                                 </thead>
@@ -48,22 +47,17 @@
                                         </td>
                                         <td>
                                             <h5 class="font-size-14 text-truncate"><a
-                                                    href="ecommerce-product-detail.html" class="text-dark">{{$or->sanpham->name??''}}</a></h5>
+                                                    href="{{asset('dochoi/product/'.$or->sanpham->id)}}" class="text-dark">{{$or->sanpham->name??''}}</a> x {{$or->quantity??''}}</h5>
                                             <p class="mb-0">Màu : <span class="fw-medium">{{$or->color->name??''}}</span>, Size : <span class="fw-medium">{{$or->size->name??''}}</span></p>
                                         </td>
                                         <td>
-                                        {{$or->sanpham->price??''}}
+                                        {{ number_format($or->sanpham->price, 0, '.', ',')." ₫"}}
                                         </td>
                                         <td>
-                                            <div style="width: 120px;">
-                                                <input type="text" value="{{$or->quantity??''}}" name="demo_vertical">
-                                            </div>
+                                        {{ number_format($or->sanpham->price*$or->quantity, 0, '.', ',')." ₫"}}
                                         </td>
                                         <td>
-                                        {{$or->sanpham->price*$or->quantity}}
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0);" class="action-icon text-danger"> <i
+                                            <a href="javascript:void(0);" onclick="removeOrder({{$or->id}})" class="action-icon text-danger"> <i
                                                     class="mdi mdi-trash-can font-size-18"></i></a>
                                         </td>
                                     </tr>
@@ -146,7 +140,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tổng cộng :</td>
-                                        <td>{{$array_tt['sum']}} VND</td>
+                                        <td>{{ number_format($array_tt['sum'], 0, '.', ',')." ₫"}}</td>
                                     </tr>
                                     <tr>
                                         <td>Giảm giá : </td>
@@ -154,11 +148,11 @@
                                     </tr>
                                     <tr>
                                         <td>Phí vận chuyển :</td>
-                                        <td>{{$array_tt['ship']}} VND</td>
+                                        <td>{{ number_format($array_tt['ship'], 0, '.', ',')." ₫"}}</td>
                                     </tr>
                                     <tr>
                                         <th>Tổng Tiền :</th>
-                                        <th>{{$array_tt['total']}} VND</th>
+                                        <th>{{ number_format($array_tt['total'], 0, '.', ',')." ₫"}}</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -174,7 +168,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="cart-pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-xxl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Thông tin đặt hàng</h5>
@@ -182,18 +176,18 @@
       </div>
       <div class="modal-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="txt_name">Tên người nhận</label>
                         <input type="text" class="form-control" id="txt_name" name="name_reservie"
                             placeholder="Nhập tên" />
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12 mt-2">
                 <label for="txt_name">Số điện thoại người nhận</label>
                         <input type="number" class="form-control" id="txt_name" name="phone_reservie"
                             placeholder="Nhập số điện thoại" />
                 </div>
             </div>
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
                 <div class="col-md-6">
                 <label for="txt_name">Tỉnh/thành phố</label>
                         <select name="province_id" id="province_id" class="form-control">
@@ -212,9 +206,9 @@
                             @endforeach
                         </select>
                 </div>
-            </div>
+            </div> -->
             <div class="row mt-2">
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                 <label for="txt_name">Phường/Xã</label>
                         <select name="village_id" id="village_id" class="form-control">
                             <option value="">--Chọn Tỉnh/thành phố--</option>
@@ -222,8 +216,8 @@
                             <option value="{{$pro->id}}">{{$pro->name}}</option>
                             @endforeach
                         </select>
-                </div>
-                <div class="col-md-6">
+                </div> -->
+                <div class="col-md-12">
                 <label for="txt_name">Địa chỉ cụ thể</label>
                         <input type="text" class="form-control" id="txt_name" name="address_reservie"
                             placeholder="Nhập địa chỉ" />

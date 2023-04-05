@@ -79,7 +79,7 @@
 
                 <!-- <h6 class="text-success text-uppercase">20 % Off</h6> -->
                 <h5 class="mb-4">Giá : <span class="text-muted me-2"><del>$240 USD</del></span>
-                    <b>{{$sanpham->price}}VNĐ</b>
+                    <b>{{ number_format($sanpham->price, 0, '.', ',')." ₫"}}</b>
                 </h5>
                 <p class="text-muted mb-4">{!! html_entity_decode($sanpham->description??'') !!}</p>
                 @if(count($size)>0)

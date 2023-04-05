@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dochoi\Dashboard;
 use App\Models\Dochoi\InfoProduct;
 use App\Models\Dochoi\Loaisanpham;
 use App\Models\Dochoi\Mau;
@@ -28,13 +29,15 @@ class ProductController extends BaseController
         $sanpham->description_detail = json_decode($sanpham->description_detail??'');
         $order = OrderDraft::where('user_id',Auth::id())->where('order_id',0)->get();
         $listloaisanpham = Loaisanpham::all();
-        return view('frontend.product.product',compact('sanpham','size','color','listsanpham','order','listloaisanpham'));
+        $dashboard=Dashboard::first();
+        return view('frontend.product.product',compact('sanpham','size','color','listsanpham','order','listloaisanpham','dashboard'));
     }
     public function listProduct($id,Request $request)
     {
         $order = OrderDraft::where('user_id',Auth::id())->where('order_id',0)->get();
         $listsanpham = Sanpham::where('dochoi_loai_san_pham_id',$id)->with('medias','infoProduct','loaisanpham.danhmuc')->get();
         $listloaisanpham = Loaisanpham::all();
-        return view('frontend.product.list_product',compact('listsanpham','order','listloaisanpham'));
+        $dashboard=Dashboard::first();
+        return view('frontend.product.list_product',compact('listsanpham','order','listloaisanpham','dashboard'));
     }
 }

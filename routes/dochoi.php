@@ -8,6 +8,12 @@ Route::prefix('dochoi')->group(function()
         Route::put('/update/{id}','Dochoi\DanhmucCtrl@update')->middleware('role');
         Route::delete('/delete/{id}','Dochoi\DanhmucCtrl@delete')->middleware('role');
     });
+    Route::prefix('slide')->group(function(){
+        Route::get('/','Dochoi\SlideCtrl@getAll');
+        Route::post('/insert','Dochoi\SlideCtrl@insert')->middleware('role');
+        Route::put('/update/{id}','Dochoi\SlideCtrl@update')->middleware('role');
+        Route::delete('/delete/{id}','Dochoi\SlideCtrl@delete')->middleware('role');
+    });
     Route::prefix('mau')->group(function(){
         Route::get('/','Dochoi\MauCtrl@getAll');
         Route::post('/insert','Dochoi\MauCtrl@insert')->middleware('role');
@@ -36,6 +42,9 @@ Route::prefix('dochoi')->group(function()
     Route::get('/list-product/{id}', 'ProductController@listProduct')->name('listProduct');
     Route::post('/add-to-cart', 'Dochoi\OrderDraftCtrl@insert')->name('insert-cart');
     Route::post('/order', 'Dochoi\OrderCtrl@insert')->name('insert-order');
+    Route::post('/order-draft/{id}', 'Dochoi\OrderDraftCtrl@delete')->name('delete-order');
+    Route::post('/dashboard', 'Dochoi\DashboardCtrl@getAll');
+    Route::post('/dashboard/update', 'Dochoi\DashboardCtrl@update');
 });
 
 Route::prefix('home')->group(function()

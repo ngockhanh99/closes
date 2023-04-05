@@ -37,8 +37,10 @@
                     style="object-fit: cover;">
             </div>
             <div class="row mt-4">
-            <div class="col-md-2">Tìm kiếm:</div>
-                <div class="col-md-4"><input type="text" class="form-control" placeholder="Nhập tên sản phẩm.."></div>
+            <div class="col-md-2 text-vertical">Tìm kiếm:</div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..">
+            </div>
             </div>
             <div class="mt-3">
                 <div class="container-grid-list">
@@ -51,6 +53,7 @@
                             <div class="add-to-cart">
                                 <a href="{{asset('dochoi/product/'.$sp->id)}}"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
                             </div>
+                            <div class="div-overflow"></div>
                         </div>
                         <div class="product-name">
                             {{$sp->name??''}}
@@ -61,7 +64,7 @@
                                 value="{{$sp->quantity??''}}" />
                         </div>
                         <div class="product-price">
-                            {{$sp->price??''}}
+                        {{ number_format($sp->price, 0, '.', ',')." ₫"}}
                         </div>
                     </div>
                     @endforeach

@@ -35,15 +35,15 @@
                 <col width="5%" />
                 <col width="*" />
                 <col width="20%" />
-                <col width="10%" />
-                <col width="10%" />
+                <!-- <col width="10%" /> -->
+                <col width="12%" />
             </colgroup>
             <thead class="table-green">
                 <tr>
                     <th class="text-center align-middle">STT</th>
                     <th class="text-center align-middle">Tên</th>
                     <th class="text-center align-middle">Ảnh hiển thị</th>
-                    <th class="text-center align-middle">Danh mục nổi bật</th>
+                    <!-- <th class="text-center align-middle">Danh mục nổi bật</th> -->
                     <th class="text-center align-middle">Thao tác</th>
                 </tr>
             </thead>
@@ -54,10 +54,10 @@
                     </td>
                     <td class="align-middle">{{ item.name }}</td>
                     <td class="text-center align-middle">
-                        <img src="{{item.media.filepath}}" alt="" width="160px" height="120px"
+                        <img src="{{item.media.filepath}}" alt="" height="80px" width="120px"
                             style="object-fit: cover;">
                     </td>
-                    <td class="align-middle"></td>
+                    <!-- <td class="align-middle"></td> -->
                     <td class="text-center align-middle">
                         <button type="button" class="btn btn-primary" ng-click="actions.showModal(false,$index)">
                             Sửa

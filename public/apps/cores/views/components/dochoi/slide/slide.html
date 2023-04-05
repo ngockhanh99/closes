@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-title">
-                    <div class="box-title-text"><span>Danh sách màu</span></div>
+                    <div class="box-title-text"><span>Danh sách slide</span></div>
                     <div class="box-title-layout">
                         <div class="flex">
                             <input type="text" class="form-control form-filter" ng-model="search.keyword"
@@ -35,13 +35,15 @@
                 <col width="5%" />
                 <col width="*" />
                 <col width="20%" />
+                <col width="10%" />
                 <col width="12%" />
             </colgroup>
             <thead class="table-green">
                 <tr>
                     <th class="text-center align-middle">STT</th>
-                    <th class="text-center align-middle">Tên</th>
-                    <th class="text-center align-middle">Màu</th>
+                    <th class="text-center align-middle">Tiêu đề</th>
+                    <th class="text-center align-middle">Ảnh hiển thị</th>
+                    <th class="text-center align-middle">Banner trang chủ</th>
                     <th class="text-center align-middle">Thao tác</th>
                 </tr>
             </thead>
@@ -50,10 +52,13 @@
                     <td class="text-center align-middle">
                         {{ $index + (search.page - 1) * search.per_page + 1 }}
                     </td>
-                    <td class="align-middle">{{ item.name }}</td>
+                    <td class="align-middle">{{ item.title }}</td>
                     <td class="text-center align-middle">
                         <img src="{{item.media.filepath}}" alt="" height="80px" width="120px"
                             style="object-fit: cover;">
+                    </td>
+                    <td class="align-middle text-center">
+                        <i style="font-size: 18px;" ng-class="item.is_banner?'bx bxs-check-circle text-success':'bx bx-x-circle text-danger'" aria-hidden="true" ></i>
                     </td>
                     <td class="text-center align-middle">
                         <button type="button" class="btn btn-primary" ng-click="actions.showModal(false,$index)">
@@ -78,24 +83,28 @@
             <div class="modal-header" style="color: #fff">
 
                 <h4 ng-if="data.isInsert" class="modal-title">
-                    Thêm mới màu
+                    Thêm mới slide
                 </h4>
                 <h4 ng-if="!data.isInsert" class="modal-title">
-                    Cập nhật màu
+                    Cập nhật slide
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
                 <div class="box-body">
-                    <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
-                        <label for="txt_name">Tên màu</label>
-                        <input type="text" class="form-control" id="txt_name" ng-model="data.singleData.name"
+                    <div class="form-group">
+                        <label for="txt_name">Tiêu đề slide</label>
+                        <input type="text" class="form-control" id="txt_name" ng-model="data.singleData.title"
                             placeholder="Nhập tên" />
-                        <span class="help-block text-red">{{ errors.name[0] }}</span>
+                    </div>
+                    <div class="form-group  mt-3">
+                        <label for="txt_name">Link liên kết</label>
+                        <input type="text" class="form-control" id="txt_name" ng-model="data.singleData.link"
+                            placeholder="Nhập tên" />
                     </div>
                     <div class="form-group padding-bottom30">
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group col-md-12">
                                     <div class="label-bt">
@@ -111,6 +120,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="checkbox mt-3">
+                        <label class="text-center">
+                            <input type="checkbox" ng-true-value="1" ng-false-value="0"
+                                ng-model="data.singleData.is_banner" />
+                            Banner trang chủ
+                        </label>
                     </div>
                 </div>
             </div>

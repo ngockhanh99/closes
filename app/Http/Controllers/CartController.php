@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cores\Cores_province;
+use App\Models\Dochoi\Dashboard;
 use App\Models\Dochoi\Loaisanpham;
 use App\Models\Dochoi\OrderDraft;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class CartController extends BaseController
             'total' => ($sum* 0.25) - 25000
           ];
           $listloaisanpham = Loaisanpham::all();
-        return view('frontend.cart.cart',compact('order','array_tt','province','listloaisanpham'));
+          $dashboard=Dashboard::first();
+        return view('frontend.cart.cart',compact('order','array_tt','province','listloaisanpham','dashboard'));
     }
 }

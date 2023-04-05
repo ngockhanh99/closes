@@ -18,6 +18,24 @@ app.config(function ($stateProvider) {
                 ],
             },
         })
+        .state("dochoi-slide", {
+            url: "/dochoi-slide",
+            controller: "slideCtrl",
+            templateUrl: SITE_ROOT + "apps/cores/views/components/dochoi/slide/slide.html",
+            resolve: {
+                loadMyCtrl: [
+                    "$ocLazyLoad",
+                    "Auth",
+                    function ($ocLazyLoad, Auth) {
+                        return Auth.checkLogin.then(() => {
+                            return $ocLazyLoad.load([
+                                SITE_ROOT + "apps/cores/views/components/dochoi/slide/slideCtrl.js?v=" + APP_VERSION,
+                            ]);
+                        });
+                    },
+                ],
+            },
+        })
         .state("dochoi-mau", {
             url: "/dochoi-mau",
             controller: "mauCtrl",

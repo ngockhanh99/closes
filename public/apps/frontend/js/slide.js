@@ -102,18 +102,18 @@ function cartPay() {
 function payMent() {
     let name = document.querySelector('input[name=name_reservie]').value;
     let phone = document.querySelector('input[name=phone_reservie]').value;
-    let province_id = document.getElementById('province_id').value;
-    let district_id = document.getElementById('district_id').value;
-    let village_id = document.getElementById('village_id').value;
+    // let province_id = document.getElementById('province_id').value;
+    // let district_id = document.getElementById('district_id').value;
+    // let village_id = document.getElementById('village_id').value;
     let address_reservie = document.querySelector('input[name=address_reservie]').value;
     let payment = document.querySelector('input[name=payment]').value;
     let data = {
         _token: $('meta[name="csrf-token"]').attr('content'),
         name: name,
         phone: phone,
-        province_id: province_id,
-        district_id: district_id,
-        village_id: village_id,
+        province_id: '',
+        district_id: '',
+        village_id: '',
         address_reservie: address_reservie,
         payment: payment,
     }
@@ -123,6 +123,11 @@ function payMent() {
         $('#empty-product').css('margin', '20px')
         $('#cart-pay').modal('hide')
 
+    })
+}
+function removeOrder(id){
+    $.post(SITE_ROOT + 'dochoi/order-draft/'+id,{_token: $('meta[name="csrf-token"]').attr('content')},function () {
+        location.reload()
     })
 }
 activeColor()

@@ -8,23 +8,27 @@ return [
         'permit' => [
             'dochoi-danhmuc' => [
                 'class_icon' => 'bx bxl-product-hunt',
-                'label' => 'Danh mục sản phẩm'
+                'label' => 'Quản lí  Danh mục sản phẩm'
             ],
             'dochoi-loaisanpham' => [
                 'class_icon' => 'fa fa-cube',
-                'label' => 'Loại sản phẩm'
+                'label' => 'Quản lí Loại sản phẩm'
             ],
             'dochoi-san-pham' => [
                 'class_icon' => 'bx bx-map',
-                'label' => 'Danh sách sản phẩm'
+                'label' => 'Quản lí Sản phẩm'
             ],
             'dochoi-mau' => [
                 'class_icon' => 'bx bxl-product-hunt',
-                'label' => 'Danh sách màu sản phẩm'
+                'label' => 'Quản lí Màu'
             ],
             'dochoi-don-hang' => [
                 'class_icon' => 'bx bxl-product-hunt',
-                'label' => 'Danh sách đơn hàng'
+                'label' => 'Quản lí Đơn hàng'
+            ],
+            'dochoi-slide' => [
+                'class_icon' => 'bx bxl-product-hunt',
+                'label' => 'Slide'
             ],
         ]
     ],  [

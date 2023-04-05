@@ -1,0 +1,79 @@
+<style>
+    .normal-input {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #c2c2c2;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        border-radius: inherit;
+    }
+    .ct-label{
+        display: flex;
+        align-items: end;
+        font-weight: bold;
+    }
+</style>
+<h1>Dahboard</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Cấu hình</div>
+            <div class="row">
+                <div class="col-md-6"  style="margin: auto;">
+                    <div class="row">
+                        <div class="col-md-2 ct-label">
+                            Địa chỉ:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text"ng-model="data.singleData.address" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ct-label">
+                            Số điện thoại:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text"  ng-model="data.singleData.phone" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ct-label">
+                            Email:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text"  ng-model="data.singleData.email" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ct-label">
+                            Facebook:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="data.singleData.facebook" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ct-label">
+                            Zalo:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="data.singleData.zalo" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ct-label">
+                            Instagram:
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="data.singleData.instagram" class="form-control normal-input">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary" ng-click="actions.update()">Cập nhật</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
